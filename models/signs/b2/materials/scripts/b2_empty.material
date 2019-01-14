@@ -1,0 +1,13 @@
+material b2_empty/sign
+{
+	technique
+	{
+		pass
+		{
+			texture_unit
+			{
+				texture b2_empty.png
+			}
+		}
+	}
+}
