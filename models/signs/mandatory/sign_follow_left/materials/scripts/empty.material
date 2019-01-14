@@ -1,0 +1,13 @@
+material sign_follow_left/empty
+{
+	technique
+	{
+		pass
+		{
+			texture_unit
+			{
+				texture sign_follow_left_empty.png
+			}
+		}
+	}
+}

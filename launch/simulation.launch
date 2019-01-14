@@ -2,7 +2,7 @@
 
 <launch>
   <arg name="mav_name" default="crazyflie"/>
-  <arg name="world_name" default="empty"/>
+  <arg name="world_name" default="my_mesh"/>
   <arg name="debug" default="false"/>
   <arg name="gui" default="true"/>
   <arg name="paused" default="false"/>
@@ -39,8 +39,8 @@
       (even when Gazebo is started through roslaunch) -->
   <arg name="verbose" default="true"/>
 
-  <env name="GAZEBO_MODEL_PATH" value="${GAZEBO_MODEL_PATH}:$(find crazyflie_gazebo)/models:$(find dd2419_simulation)/models:$(find dd2419_simulation)/models/signs:$(find dd2419_simulation)/models/aruco_gazebo"/>
-  <env name="GAZEBO_RESOURCE_PATH" value="${GAZEBO_RESOURCE_PATH}:$(find crazyflie_gazebo)/models:$(find dd2419_simulation)/models:$(find dd2419_simulation)/models/aruco_gazebo"/>
+  <env name="GAZEBO_MODEL_PATH" value="${GAZEBO_MODEL_PATH}:$(find crazyflie_gazebo)/models:$(find dd2419_simulation)/models:$(find dd2419_simulation)/models/signs/information:$(find dd2419_simulation)/models/signs/mandatory:$(find dd2419_simulation)/models/signs/priority:$(find dd2419_simulation)/models/signs/prohibitory:$(find dd2419_simulation)/models/signs/warning:$(find dd2419_simulation)/models/aruco_gazebo"/>
+  <env name="GAZEBO_RESOURCE_PATH" value="${GAZEBO_RESOURCE_PATH}:$(find crazyflie_gazebo)/models:$(find dd2419_simulation)/models:$(find dd2419_simulation)/models/signs/information:$(find dd2419_simulation)/models/signs/mandatory:$(find dd2419_simulation)/models/signs/priority:$(find dd2419_simulation)/models/signs/prohibitory:$(find dd2419_simulation)/models/signs/warning:$(find dd2419_simulation)/models/aruco_gazebo"/>
 
   <include file="$(find gazebo_ros)/launch/empty_world.launch">
     <arg name="world_name" value="$(find crazyflie_gazebo)/worlds/$(arg world_name).world"/>
