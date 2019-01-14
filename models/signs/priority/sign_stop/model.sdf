@@ -50,17 +50,9 @@
         </geometry>
         <material>
           <script>
-            <uri>model://sign_stop/materials/scripts</uri>
-            <uri>model://sign_stop/materials/textures</uri>
-            <name>sign_stop/empty</name>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+            <name>Gazebo/DarkOrangeTransparentOverlay</name>
           </script>
-          <ambient>1 1 1 1</ambient>
-          <diffuse>1 1 1 1</diffuse>
-          <specular>0 0 0 1</specular>
-          <emissive>1 1 1 0</emissive>
-          <shader type='vertex'>
-            <normal_map>__default__</normal_map>
-          </shader>
         </material>
         <pose frame=''>0 0 0 0 -0 0</pose>
         <cast_shadows>1</cast_shadows>
