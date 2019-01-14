@@ -39,8 +39,8 @@
       (even when Gazebo is started through roslaunch) -->
   <arg name="verbose" default="true"/>
 
-  <env name="GAZEBO_MODEL_PATH" value="${GAZEBO_MODEL_PATH}:$(find crazyflie_gazebo)/models:$(find simulation)/models:$(find simulation)/models/signs:$(find simulation)/models/aruco_gazebo"/>
-  <env name="GAZEBO_RESOURCE_PATH" value="${GAZEBO_RESOURCE_PATH}:$(find crazyflie_gazebo)/models:$(find simulation)/models:$(find simulation)/models/aruco_gazebo"/>
+  <env name="GAZEBO_MODEL_PATH" value="${GAZEBO_MODEL_PATH}:$(find crazyflie_gazebo)/models:$(find dd2419_simulation)/models:$(find dd2419_simulation)/models/signs:$(find dd2419_simulation)/models/aruco_gazebo"/>
+  <env name="GAZEBO_RESOURCE_PATH" value="${GAZEBO_RESOURCE_PATH}:$(find crazyflie_gazebo)/models:$(find dd2419_simulation)/models:$(find dd2419_simulation)/models/aruco_gazebo"/>
 
   <include file="$(find gazebo_ros)/launch/empty_world.launch">
     <arg name="world_name" value="$(find crazyflie_gazebo)/worlds/$(arg world_name).world"/>
@@ -86,10 +86,10 @@
     </include>
   </group>
 
-  <node name="cf_sitl" pkg="simulation" type="cf2" />
+  <node name="cf_sitl" pkg="dd2419_simulation" type="cf2" />
   
   <!-- Do not use this!!!
-  <node name="cf_arm" pkg="simulation" type="arm.py" output="screen" >
+  <node name="cf_arm" pkg="dd2419_simulation" type="arm.py" output="screen" >
     <param name="cf_prefix" value="$(arg cfPrefix)1" />
     <param name="tf_prefix" value="/$(arg tf_prefix_1)" />
     <param name="takeoff" value="true" />
