@@ -2,7 +2,7 @@
 
 <launch>
   <arg name="mav_name" default="crazyflie"/>
-  <arg name="world_name" default="empty"/>
+  <arg name="world_name" default="lab.walled.world"/>
   <arg name="debug" default="false"/>
   <arg name="gui" default="true"/>
   <arg name="paused" default="false"/>
@@ -31,7 +31,7 @@
   <arg name="tf_prefix_1" default="$(arg cfPrefix)1" />
   <arg name="color_prop_front_1" default="Blue" />
   <arg name="color_prop_back_1" default="Red" />
-  <arg name="x_1" default="0.0" />
+  <arg name="x_1" default="-0.1" />
   <arg name="y_1" default="0.0" />
   <arg name="z_1" default="0.03" />
 
@@ -43,7 +43,7 @@
   <env name="GAZEBO_RESOURCE_PATH" value="${GAZEBO_RESOURCE_PATH}:$(find crazyflie_gazebo)/models:$(find dd2419_simulation)/models:$(find dd2419_simulation)/models/signs/information:$(find dd2419_simulation)/models/signs/mandatory:$(find dd2419_simulation)/models/signs/priority:$(find dd2419_simulation)/models/signs/prohibitory:$(find dd2419_simulation)/models/signs/warning:$(find dd2419_simulation)/models/aruco_gazebo"/>
 
   <include file="$(find gazebo_ros)/launch/empty_world.launch">
-    <arg name="world_name" value="$(find crazyflie_gazebo)/worlds/$(arg world_name).world"/>
+    <arg name="world_name" value="$(find dd2419_simulation)/worlds/$(arg world_name).world"/>
     <arg name="debug" value="$(arg debug)" />
     <arg name="paused" value="$(arg paused)" />
     <arg name="gui" value="$(arg gui)" />
@@ -85,6 +85,7 @@
       <arg name="enable_logging_packets" value="$(arg enable_logging_packets)"/>
     </include>
   </group>
+
 
   <node name="cf_sitl" pkg="dd2419_simulation" type="cf2" />
   
