@@ -34,23 +34,23 @@
     </model>
     <include>
       <uri>model://aruco_visual_marker_1_pad</uri>
-      <pose>0.5 -0.5 0.0 0.0 0.0 2.35619449019</pose>
+      <pose>0.5 -0.5 0.0 0.0 0.0 0.785398163397</pose>
     </include>
     <include>
       <uri>model://aruco_visual_marker_2_pad</uri>
-      <pose>0.5 0.5 0.0 0.0 0.0 3.92699081699</pose>
+      <pose>0.5 0.5 0.0 0.0 0.0 2.35619449019</pose>
     </include>
     <include>
       <uri>model://aruco_visual_marker_3_pad</uri>
-      <pose>-0.5 0.5 0.0 0.0 0.0 -0.785398163397</pose>
+      <pose>-0.5 0.5 0.0 0.0 0.0 -2.35619449019</pose>
     </include>
     <include>
       <uri>model://aruco_visual_marker_4_pad</uri>
-      <pose>-0.5 -0.5 0.0 0.0 0.0 0.785398163397</pose>
+      <pose>-0.5 -0.5 0.0 0.0 0.0 -0.785398163397</pose>
     </include>
     <model name="wall_0">
       <link name="link_0">
-        <pose frame="">0.75 0.75 2.5 0 0 -2.35619449019</pose>
+        <pose frame="">2.0 3.0 1.5 0 0 1.57079632679</pose>
         <gravity>0</gravity>
         <self_collide>0</self_collide>
         <kinematic>1</kinematic>
@@ -58,7 +58,7 @@
           <pose frame="">0 0 0 0 0 0</pose>
           <geometry>
             <box>
-              <size>2.12132034356 0.02 5.0</size>
+              <size>2.0 0.02 3.0</size>
             </box>
           </geometry>
           <material>
@@ -74,7 +74,7 @@
           <pose frame="">0 0 0 0 0 0</pose>
           <geometry>
             <box>
-              <size>2.12132034356 0.02 5.0</size>
+              <size>2.0 0.02 3.0</size>
             </box>
           </geometry>
         </collision>
@@ -176,13 +176,297 @@
         </collision>
       </link>
     </model>
+    <model name="wall_4">
+      <link name="link_0">
+        <pose frame="">0.676776695297 0.676776695297 0.2 0 0 -2.35619449019</pose>
+        <gravity>0</gravity>
+        <self_collide>0</self_collide>
+        <kinematic>1</kinematic>
+        <visual name="wall_4_visual">
+          <pose frame="">0 0 0 0 0 0</pose>
+          <geometry>
+            <box>
+              <size>0.1 0.02 0.4</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/DarkOrangeTransparentOverlay</name>
+            </script>
+          </material>
+          <cast_shadows>1</cast_shadows>
+          <transparency>0</transparency>
+        </visual>
+        <collision name="wall_4_collision">
+          <pose frame="">0 0 0 0 0 0</pose>
+          <geometry>
+            <box>
+              <size>0.1 0.02 0.4</size>
+            </box>
+          </geometry>
+        </collision>
+      </link>
+    </model>
+    <model name="wall_5">
+      <link name="link_0">
+        <pose frame="">0.323223304703 0.323223304703 0.2 0 0 -2.35619449019</pose>
+        <gravity>0</gravity>
+        <self_collide>0</self_collide>
+        <kinematic>1</kinematic>
+        <visual name="wall_5_visual">
+          <pose frame="">0 0 0 0 0 0</pose>
+          <geometry>
+            <box>
+              <size>0.1 0.02 0.4</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/DarkOrangeTransparentOverlay</name>
+            </script>
+          </material>
+          <cast_shadows>1</cast_shadows>
+          <transparency>0</transparency>
+        </visual>
+        <collision name="wall_5_collision">
+          <pose frame="">0 0 0 0 0 0</pose>
+          <geometry>
+            <box>
+              <size>0.1 0.02 0.4</size>
+            </box>
+          </geometry>
+        </collision>
+      </link>
+    </model>
+    <model name="wall_6">
+      <link name="link_0">
+        <pose frame="">0.5 0.5 1.2 0 0 -2.35619449019</pose>
+        <gravity>0</gravity>
+        <self_collide>0</self_collide>
+        <kinematic>1</kinematic>
+        <visual name="wall_6_visual">
+          <pose frame="">0 0 0 0 0 0</pose>
+          <geometry>
+            <box>
+              <size>0.6 0.02 1.6</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/DarkOrangeTransparentOverlay</name>
+            </script>
+          </material>
+          <cast_shadows>1</cast_shadows>
+          <transparency>0</transparency>
+        </visual>
+        <collision name="wall_6_collision">
+          <pose frame="">0 0 0 0 0 0</pose>
+          <geometry>
+            <box>
+              <size>0.6 0.02 1.6</size>
+            </box>
+          </geometry>
+        </collision>
+      </link>
+    </model>
+    <model name="wall_7">
+      <link name="link_0">
+        <pose frame="">-0.323223304703 0.323223304703 0.2 0 0 2.35619449019</pose>
+        <gravity>0</gravity>
+        <self_collide>0</self_collide>
+        <kinematic>1</kinematic>
+        <visual name="wall_7_visual">
+          <pose frame="">0 0 0 0 0 0</pose>
+          <geometry>
+            <box>
+              <size>0.1 0.02 0.4</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/DarkOrangeTransparentOverlay</name>
+            </script>
+          </material>
+          <cast_shadows>1</cast_shadows>
+          <transparency>0</transparency>
+        </visual>
+        <collision name="wall_7_collision">
+          <pose frame="">0 0 0 0 0 0</pose>
+          <geometry>
+            <box>
+              <size>0.1 0.02 0.4</size>
+            </box>
+          </geometry>
+        </collision>
+      </link>
+    </model>
+    <model name="wall_8">
+      <link name="link_0">
+        <pose frame="">-0.676776695297 0.676776695297 0.2 0 0 2.35619449019</pose>
+        <gravity>0</gravity>
+        <self_collide>0</self_collide>
+        <kinematic>1</kinematic>
+        <visual name="wall_8_visual">
+          <pose frame="">0 0 0 0 0 0</pose>
+          <geometry>
+            <box>
+              <size>0.1 0.02 0.4</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/DarkOrangeTransparentOverlay</name>
+            </script>
+          </material>
+          <cast_shadows>1</cast_shadows>
+          <transparency>0</transparency>
+        </visual>
+        <collision name="wall_8_collision">
+          <pose frame="">0 0 0 0 0 0</pose>
+          <geometry>
+            <box>
+              <size>0.1 0.02 0.4</size>
+            </box>
+          </geometry>
+        </collision>
+      </link>
+    </model>
+    <model name="wall_9">
+      <link name="link_0">
+        <pose frame="">-0.5 0.5 1.2 0 0 2.35619449019</pose>
+        <gravity>0</gravity>
+        <self_collide>0</self_collide>
+        <kinematic>1</kinematic>
+        <visual name="wall_9_visual">
+          <pose frame="">0 0 0 0 0 0</pose>
+          <geometry>
+            <box>
+              <size>0.6 0.02 1.6</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/DarkOrangeTransparentOverlay</name>
+            </script>
+          </material>
+          <cast_shadows>1</cast_shadows>
+          <transparency>0</transparency>
+        </visual>
+        <collision name="wall_9_collision">
+          <pose frame="">0 0 0 0 0 0</pose>
+          <geometry>
+            <box>
+              <size>0.6 0.02 1.6</size>
+            </box>
+          </geometry>
+        </collision>
+      </link>
+    </model>
+    <model name="wall_10">
+      <link name="link_0">
+        <pose frame="">-0.676776695297 -0.676776695297 0.2 0 0 0.785398163397</pose>
+        <gravity>0</gravity>
+        <self_collide>0</self_collide>
+        <kinematic>1</kinematic>
+        <visual name="wall_10_visual">
+          <pose frame="">0 0 0 0 0 0</pose>
+          <geometry>
+            <box>
+              <size>0.1 0.02 0.4</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/DarkOrangeTransparentOverlay</name>
+            </script>
+          </material>
+          <cast_shadows>1</cast_shadows>
+          <transparency>0</transparency>
+        </visual>
+        <collision name="wall_10_collision">
+          <pose frame="">0 0 0 0 0 0</pose>
+          <geometry>
+            <box>
+              <size>0.1 0.02 0.4</size>
+            </box>
+          </geometry>
+        </collision>
+      </link>
+    </model>
+    <model name="wall_11">
+      <link name="link_0">
+        <pose frame="">-0.323223304703 -0.323223304703 0.2 0 0 0.785398163397</pose>
+        <gravity>0</gravity>
+        <self_collide>0</self_collide>
+        <kinematic>1</kinematic>
+        <visual name="wall_11_visual">
+          <pose frame="">0 0 0 0 0 0</pose>
+          <geometry>
+            <box>
+              <size>0.1 0.02 0.4</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/DarkOrangeTransparentOverlay</name>
+            </script>
+          </material>
+          <cast_shadows>1</cast_shadows>
+          <transparency>0</transparency>
+        </visual>
+        <collision name="wall_11_collision">
+          <pose frame="">0 0 0 0 0 0</pose>
+          <geometry>
+            <box>
+              <size>0.1 0.02 0.4</size>
+            </box>
+          </geometry>
+        </collision>
+      </link>
+    </model>
+    <model name="wall_12">
+      <link name="link_0">
+        <pose frame="">-0.5 -0.5 1.2 0 0 0.785398163397</pose>
+        <gravity>0</gravity>
+        <self_collide>0</self_collide>
+        <kinematic>1</kinematic>
+        <visual name="wall_12_visual">
+          <pose frame="">0 0 0 0 0 0</pose>
+          <geometry>
+            <box>
+              <size>0.6 0.02 1.6</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/DarkOrangeTransparentOverlay</name>
+            </script>
+          </material>
+          <cast_shadows>1</cast_shadows>
+          <transparency>0</transparency>
+        </visual>
+        <collision name="wall_12_collision">
+          <pose frame="">0 0 0 0 0 0</pose>
+          <geometry>
+            <box>
+              <size>0.6 0.02 1.6</size>
+            </box>
+          </geometry>
+        </collision>
+      </link>
+    </model>
     <include>
       <uri>model://sign_stop</uri>
-      <pose>2.5 -2.5 0.0 0.0 0.0 2.35619449019</pose>
-    </include>
-    <include>
-      <uri>model://sign_stop</uri>
-      <pose>2.5 2.5 0.0 0.0 0.0 3.14159265359</pose>
+      <pose>2.0 3.0 0.0 -1.57079632679 0.0 1.57079632679</pose>
     </include>
     <physics default="0" name="default_physics" type="ode">
       <gravity>0 0 -9.8066</gravity>

@@ -68,7 +68,6 @@ def generate_world(save_path, data):
     # Add markers from json file
     for elem in data['markers']:
         elem['pose']['orientation'][0] = elem['pose']['orientation'][0] - 90
-        elem['pose']['orientation'][2] = elem['pose']['orientation'][2] + 90
         include = ET.SubElement(world, "include")
         ET.SubElement(include, "uri").text = "model://aruco_visual_marker_" + \
             str(elem['id']) + "_pad"
@@ -131,7 +130,6 @@ def generate_world(save_path, data):
     # Add signs from json file
     for elem in data['roadsigns']:
         elem['pose']['orientation'][0] = elem['pose']['orientation'][0] - 90
-        elem['pose']['orientation'][2] = elem['pose']['orientation'][2] + 90
         include = ET.SubElement(world, "include")
         ET.SubElement(include, "uri").text = "model://sign_" + \
             str(elem['sign'])
