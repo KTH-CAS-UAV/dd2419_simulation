@@ -118,13 +118,13 @@ def add_marker(package_path, world, elem, width, height):
     ET.SubElement(script, "name").text = 'marker_aruco-' + \
         str(elem['id']) + '/marker'
 
-    ET.SubElement(visual, "pose", frame="''").text = '0 0 0 0 0 0'
+    ET.SubElement(visual, "pose", frame="''").text = '0 0 1e-4 0 0 0'
     ET.SubElement(visual, "cast_shadows").text = '1'
     ET.SubElement(visual, "transparency").text = '0'
 
     collision = ET.SubElement(link, "collision", name='collision')
     ET.SubElement(collision, "pose",
-                  frame="''").text = '0 0 0 0 0 0'
+                  frame="''").text = '0 0 1e-4 0 0 0'
     collision_geometry = ET.SubElement(collision, "geometry")
     collision_box = ET.SubElement(collision_geometry, "box")
     ET.SubElement(collision_box, "size").text = str(
@@ -136,7 +136,7 @@ def add_marker(package_path, world, elem, width, height):
     # Backside
     visual_backside = ET.SubElement(link, "visual", name="visual_backside")
     ET.SubElement(visual_backside, "pose",
-                  frame="''").text = '0 0 -1e-5 0 -0 0'
+                  frame="''").text = '0 0 0 0 0 0'
 
     geometry_backside = ET.SubElement(visual_backside, "geometry")
     box_backside = ET.SubElement(geometry_backside, "box")
@@ -149,7 +149,7 @@ def add_marker(package_path, world, elem, width, height):
     collision_backside = ET.SubElement(
         link, "collision", name='collision_backside')
     ET.SubElement(collision_backside, "pose",
-                  frame="''").text = '0 0 -1e-5 0 -0 0'
+                  frame="''").text = '0 0 0 0 0 0'
     collision_backside_geometry = ET.SubElement(collision_backside, "geometry")
     collision_backside_box = ET.SubElement(collision_backside_geometry, "box")
     ET.SubElement(collision_backside_box, "size").text = str(
@@ -185,13 +185,13 @@ def add_sign(package_path, world, elem, width, height):
     ET.SubElement(script, "name").text = 'sign_' + \
         str(elem['sign']) + '/sign'
 
-    ET.SubElement(visual, "pose", frame="''").text = '0 0 0 0 0 0'
+    ET.SubElement(visual, "pose", frame="''").text = '0 0 1e-4 0 0 0'
     ET.SubElement(visual, "cast_shadows").text = '1'
     ET.SubElement(visual, "transparency").text = '0'
 
     collision = ET.SubElement(link, "collision", name='collision')
     ET.SubElement(collision, "pose",
-                  frame="''").text = '0 0 0 0 0 0'
+                  frame="''").text = '0 0 1e-4 0 0 0'
     collision_geometry = ET.SubElement(collision, "geometry")
     collision_box = ET.SubElement(collision_geometry, "box")
     ET.SubElement(collision_box, "size").text = str(
@@ -203,7 +203,7 @@ def add_sign(package_path, world, elem, width, height):
     # Backside
     visual_backside = ET.SubElement(link, "visual", name="visual_backside")
     ET.SubElement(visual_backside, "pose",
-                  frame="''").text = '0 0 -1e-5 0 -0 0'
+                  frame="''").text = '0 0 0 0 0 0'
 
     geometry_backside = ET.SubElement(visual_backside, "geometry")
     box_backside = ET.SubElement(geometry_backside, "box")
@@ -216,7 +216,7 @@ def add_sign(package_path, world, elem, width, height):
     collision_backside = ET.SubElement(
         link, "collision", name='collision_backside')
     ET.SubElement(collision_backside, "pose",
-                  frame="''").text = '0 0 -1e-5 0 -0 0'
+                  frame="''").text = '0 0 0 0 0 0'
     collision_backside_geometry = ET.SubElement(collision_backside, "geometry")
     collision_backside_box = ET.SubElement(collision_backside_geometry, "box")
     ET.SubElement(collision_backside_box, "size").text = str(
