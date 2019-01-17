@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+
+<launch>
+  <arg name="world_name" default="lab"/>
+
+  <node name="map_publisher" pkg="dd2419_simulation" type="map_publisher.py" output="screen">
+    <param name="json_file" value="$(find dd2419_simulation)/worlds_json/$(arg world_name).world.json"/>
+  </node>
+
+</launch>
