@@ -31,7 +31,7 @@
   <arg name="tf_prefix_1" default="$(arg cfPrefix)1" />
   <arg name="color_prop_front_1" default="Blue" />
   <arg name="color_prop_back_1" default="Red" />
-  <arg name="x_1" default="-0.1" />
+  <arg name="x_1" default="0.0" />
   <arg name="y_1" default="0.0" />
   <arg name="z_1" default="0.03" />
 
