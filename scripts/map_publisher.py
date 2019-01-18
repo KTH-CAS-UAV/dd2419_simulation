@@ -204,23 +204,62 @@ def add_walls(markers, data):
         marker.pose.position.z = (
             elem['plane']['stop'][2] + elem['plane']['start'][2])/2
         quaternion = tf.transformations.quaternion_from_euler(math.radians(90), 0, math.atan2(
-            elem['plane']['stop'][1] - elem['plane']['start'][1], elem['plane']['stop'][0] - elem['plane']['start'][0]))
+            elem['plane']['stop'][1] - elem['plane']['start'][1], elem['plane']['stop'][0] - elem['plane']['start'][0]) + math.radians(90))
         marker.pose.orientation.x = quaternion[0]
         marker.pose.orientation.y = quaternion[1]
         marker.pose.orientation.z = quaternion[2]
         marker.pose.orientation.w = quaternion[3]
-        marker.scale.x = math.hypot(elem['plane']['stop'][0] - elem['plane']['start'][0], elem['plane']
-                                    ['stop'][1] - elem['plane']['start'][1])
+        marker.scale.x = 1e-5
         marker.scale.y = math.fabs(
             (elem['plane']['stop'][2] - elem['plane']['start'][2]))
-        marker.scale.z = 1e-5
+        marker.scale.z = math.hypot(elem['plane']['stop'][0] - elem['plane']['start'][0], elem['plane']
+                                    ['stop'][1] - elem['plane']['start'][1])
         marker.color.a = 1.0
-        marker.color.r = 0.0
-        marker.color.g = 0.0
-        marker.color.b = 1.0
+        if 'gate' in elem:
+            marker.color.r = 0.0
+            marker.color.g = 0.0
+            marker.color.b = 1.0
+        else:
+            marker.color.r = 0.7
+            marker.color.g = 0.4
+            marker.color.b = 0.0
         markers.markers.append(marker)
 
         if 'gate' in elem:
+            # Backside
+            marker = Marker()
+            marker.header.frame_id = "map"
+            marker.header.stamp = rospy.Time.now()
+            marker.ns = "map/gates"
+            marker.id = idx + 1000
+            marker.type = Marker.CUBE
+            marker.action = Marker.ADD
+            marker.pose.position.x = (
+                elem['plane']['stop'][0] + elem['plane']['start'][0])/2 + 1e-2 * math.cos(math.atan2(
+                    elem['plane']['stop'][1] - elem['plane']['start'][1], elem['plane']['stop'][0] - elem['plane']['start'][0]) + math.radians(90))
+            marker.pose.position.y = (
+                elem['plane']['stop'][1] + elem['plane']['start'][1])/2 + 1e-2 * math.sin(math.atan2(
+                    elem['plane']['stop'][1] - elem['plane']['start'][1], elem['plane']['stop'][0] - elem['plane']['start'][0]) + math.radians(90))
+            marker.pose.position.z = (
+                elem['plane']['stop'][2] + elem['plane']['start'][2])/2
+            quaternion = tf.transformations.quaternion_from_euler(math.radians(90), 0, math.atan2(
+                elem['plane']['stop'][1] - elem['plane']['start'][1], elem['plane']['stop'][0] - elem['plane']['start'][0]) + math.radians(90))
+            marker.pose.orientation.x = quaternion[0]
+            marker.pose.orientation.y = quaternion[1]
+            marker.pose.orientation.z = quaternion[2]
+            marker.pose.orientation.w = quaternion[3]
+            marker.scale.x = 1e-5
+            marker.scale.y = math.fabs(
+                (elem['plane']['stop'][2] - elem['plane']['start'][2]))
+            marker.scale.z = math.hypot(elem['plane']['stop'][0] - elem['plane']['start'][0], elem['plane']
+                                        ['stop'][1] - elem['plane']['start'][1])
+            marker.color.a = 1.0
+            marker.color.r = 1.0
+            marker.color.g = 0.0
+            marker.color.b = 0.0
+            markers.markers.append(marker)
+
+            # Text
             marker_text = Marker()
             marker_text.header.frame_id = "map"
             marker_text.header.stamp = rospy.Time.now()

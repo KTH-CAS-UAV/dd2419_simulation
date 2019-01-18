@@ -18,7 +18,7 @@ def gates_to_walls(data):
                          [0.0,            0.0, 1.0]])
 
     def walls_for_gate(gate):
-        R = yaw_matrix(gate['heading']/180.0*np.pi).T.dot
+        R = yaw_matrix((gate['heading']-90)/180.0*np.pi).dot
         gx, gy, _ = gate['position']
 
         # Right
