@@ -50,12 +50,12 @@
               <name>marker_aruco-1/marker</name>
             </script>
           </material>
-          <pose frame="''">0 0 1e-4 0 0 0</pose>
+          <pose frame="''">0 0 0.001 0 0 0</pose>
           <cast_shadows>1</cast_shadows>
           <transparency>0</transparency>
         </visual>
         <collision name="collision">
-          <pose frame="''">0 0 1e-4 0 0 0</pose>
+          <pose frame="''">0 0 0.001 0 0 0</pose>
           <geometry>
             <box>
               <size>0.197 0.197 1e-5</size>
@@ -102,12 +102,12 @@
               <name>marker_aruco-2/marker</name>
             </script>
           </material>
-          <pose frame="''">0 0 1e-4 0 0 0</pose>
+          <pose frame="''">0 0 0.001 0 0 0</pose>
           <cast_shadows>1</cast_shadows>
           <transparency>0</transparency>
         </visual>
         <collision name="collision">
-          <pose frame="''">0 0 1e-4 0 0 0</pose>
+          <pose frame="''">0 0 0.001 0 0 0</pose>
           <geometry>
             <box>
               <size>0.197 0.197 1e-5</size>
@@ -154,12 +154,12 @@
               <name>marker_aruco-3/marker</name>
             </script>
           </material>
-          <pose frame="''">0 0 1e-4 0 0 0</pose>
+          <pose frame="''">0 0 0.001 0 0 0</pose>
           <cast_shadows>1</cast_shadows>
           <transparency>0</transparency>
         </visual>
         <collision name="collision">
-          <pose frame="''">0 0 1e-4 0 0 0</pose>
+          <pose frame="''">0 0 0.001 0 0 0</pose>
           <geometry>
             <box>
               <size>0.197 0.197 1e-5</size>
@@ -206,12 +206,12 @@
               <name>marker_aruco-4/marker</name>
             </script>
           </material>
-          <pose frame="''">0 0 1e-4 0 0 0</pose>
+          <pose frame="''">0 0 0.001 0 0 0</pose>
           <cast_shadows>1</cast_shadows>
           <transparency>0</transparency>
         </visual>
         <collision name="collision">
-          <pose frame="''">0 0 1e-4 0 0 0</pose>
+          <pose frame="''">0 0 0.001 0 0 0</pose>
           <geometry>
             <box>
               <size>0.197 0.197 1e-5</size>
@@ -647,12 +647,12 @@
               <name>sign_stop/sign</name>
             </script>
           </material>
-          <pose frame="''">0 0 1e-4 0 0 0</pose>
+          <pose frame="''">0 0 0.001 0 0 0</pose>
           <cast_shadows>1</cast_shadows>
           <transparency>0</transparency>
         </visual>
         <collision name="collision">
-          <pose frame="''">0 0 1e-4 0 0 0</pose>
+          <pose frame="''">0 0 0.001 0 0 0</pose>
           <geometry>
             <box>
               <size>0.2 0.2 1e-5</size>

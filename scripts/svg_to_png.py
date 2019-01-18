@@ -6,6 +6,8 @@ import os
 from subprocess import call
 
 max_res = 512
+max_sign_res = max_res
+max_aruco_res = max_res * 0.9
 
 
 def svg_to_png(path, object_type, width, height):
@@ -18,10 +20,26 @@ def svg_to_png(path, object_type, width, height):
         os.makedirs(save_dir + 'scripts/')
     for file in os.listdir(load_dir):
         if len(file) > 4 and file[-4:] == '.svg':
-            res_width = str(max_res * min((width / height), 1))
-            res_height = str(max_res * min((height / width), 1))
-            command = 'convert -background transparent ' + load_dir + file + \
-                ' -resize ' + res_width + 'x' + res_height + ' -background transparent -gravity center -extent ' + res_width + 'x' + res_height + ' ' + \
+            full_res_width = str(max_res * min((width / height), 1))
+            full_res_height = str(max_res * min((height / width), 1))
+            object_res_width = full_res_width
+            object_res_height = full_res_height
+
+            background = 'transparent'
+            if object_type == 'markers':
+                background = 'white'
+                object_res_width = str(
+                    max_aruco_res * min((width / height), 1))
+                object_res_height = str(
+                    max_aruco_res * min((height / width), 1))
+            elif object_type == 'signs':
+                object_res_width = str(
+                    max_sign_res * min((width / height), 1))
+                object_res_height = str(
+                    max_sign_res * min((height / width), 1))
+
+            command = 'convert -background ' + background + ' ' + load_dir + file + \
+                ' -resize ' + object_res_width + 'x' + object_res_height + ' -background ' + background + ' -gravity center -extent ' + full_res_width + 'x' + full_res_height + ' ' + \
                 save_dir + 'textures/' + re.sub('\.svg$', '.png', file)
             os.system(command)
 

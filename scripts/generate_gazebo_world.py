@@ -24,9 +24,7 @@ def indent(elem, level=0):
 
 def add_wall(world, elem, index):
     model = None
-    is_gate = 'gate' in elem
-    new_model = False
-    if is_gate:
+    if 'gate' in elem:
         name = 'gate_' + str(elem['gate'])
 
         for m in world.iter('model'):
@@ -37,7 +35,6 @@ def add_wall(world, elem, index):
         index = index + 1
 
     if not model:
-        new_model = True
         model = ET.SubElement(world, "model", name=name)
         ET.SubElement(model, "pose", frame="''").text = '0 0 0 0 0 0'
 
@@ -90,6 +87,7 @@ def add_wall(world, elem, index):
 
 
 def add_marker(package_path, world, elem, width, height):
+    move_forward = 1e-3
     model = ET.SubElement(
         world, "model", name='aruco_marker_' + str(elem['id']))
 
@@ -118,13 +116,14 @@ def add_marker(package_path, world, elem, width, height):
     ET.SubElement(script, "name").text = 'marker_aruco-' + \
         str(elem['id']) + '/marker'
 
-    ET.SubElement(visual, "pose", frame="''").text = '0 0 1e-4 0 0 0'
+    ET.SubElement(visual, "pose", frame="''").text = '0 0 ' + \
+        str(move_forward) + ' 0 0 0'
     ET.SubElement(visual, "cast_shadows").text = '1'
     ET.SubElement(visual, "transparency").text = '0'
 
     collision = ET.SubElement(link, "collision", name='collision')
     ET.SubElement(collision, "pose",
-                  frame="''").text = '0 0 1e-4 0 0 0'
+                  frame="''").text = '0 0 ' + str(move_forward) + ' 0 0 0'
     collision_geometry = ET.SubElement(collision, "geometry")
     collision_box = ET.SubElement(collision_geometry, "box")
     ET.SubElement(collision_box, "size").text = str(
@@ -135,8 +134,7 @@ def add_marker(package_path, world, elem, width, height):
 
     # Backside
     visual_backside = ET.SubElement(link, "visual", name="visual_backside")
-    ET.SubElement(visual_backside, "pose",
-                  frame="''").text = '0 0 0 0 0 0'
+    ET.SubElement(visual_backside, "pose", frame="''").text = '0 0 0 0 0 0'
 
     geometry_backside = ET.SubElement(visual_backside, "geometry")
     box_backside = ET.SubElement(geometry_backside, "box")
@@ -148,8 +146,7 @@ def add_marker(package_path, world, elem, width, height):
 
     collision_backside = ET.SubElement(
         link, "collision", name='collision_backside')
-    ET.SubElement(collision_backside, "pose",
-                  frame="''").text = '0 0 0 0 0 0'
+    ET.SubElement(collision_backside, "pose", frame="''").text = '0 0 0 0 0 0'
     collision_backside_geometry = ET.SubElement(collision_backside, "geometry")
     collision_backside_box = ET.SubElement(collision_backside_geometry, "box")
     ET.SubElement(collision_backside_box, "size").text = str(
@@ -157,6 +154,7 @@ def add_marker(package_path, world, elem, width, height):
 
 
 def add_sign(package_path, world, elem, width, height):
+    move_forward = 1e-3
     model = ET.SubElement(
         world, "model", name='sign_' + str(elem['sign']))
 
@@ -185,13 +183,14 @@ def add_sign(package_path, world, elem, width, height):
     ET.SubElement(script, "name").text = 'sign_' + \
         str(elem['sign']) + '/sign'
 
-    ET.SubElement(visual, "pose", frame="''").text = '0 0 1e-4 0 0 0'
+    ET.SubElement(visual, "pose", frame="''").text = '0 0 ' + \
+        str(move_forward) + ' 0 0 0'
     ET.SubElement(visual, "cast_shadows").text = '1'
     ET.SubElement(visual, "transparency").text = '0'
 
     collision = ET.SubElement(link, "collision", name='collision')
     ET.SubElement(collision, "pose",
-                  frame="''").text = '0 0 1e-4 0 0 0'
+                  frame="''").text = '0 0 ' + str(move_forward) + ' 0 0 0'
     collision_geometry = ET.SubElement(collision, "geometry")
     collision_box = ET.SubElement(collision_geometry, "box")
     ET.SubElement(collision_box, "size").text = str(
@@ -273,21 +272,6 @@ def generate_world(save_path, data, package_path):
     for elem in data['markers']:
         add_marker(package_path, world, elem,
                    data['marker_size'][0], data['marker_size'][1])
-        # elem['pose']['orientation'][0] = elem['pose']['orientation'][0] - 90
-        # include = ET.SubElement(world, "include")
-        # ET.SubElement(include, "uri").text = "model://aruco_visual_marker_" + \
-        #     str(elem['id']) + "_pad"
-        # ET.SubElement(include, "pose").text = ' '.join(str(
-        #     e) for e in elem['pose']['position']) + ' ' + ' '.join(str(
-        #         math.radians(e)) for e in elem['pose']['orientation'])
-
-    # Add gates from json file
-    # for elem in data['gates']:
-    #     elem['heading'] = elem['heading'] + 90
-    #     include = ET.SubElement(world, "include")
-    #     ET.SubElement(include, "uri").text = "model://gate"
-    #     ET.SubElement(include, "pose").text = ' '.join(str(
-    #         e) for e in elem['position']) + ' 0 0 ' + str(math.radians(elem['heading']))
 
     # Add walls from json file
     index = 0
@@ -300,18 +284,6 @@ def generate_world(save_path, data, package_path):
     for elem in data['roadsigns']:
         add_sign(package_path, world, elem,
                  data['roadsign_size'][0], data['roadsign_size'][1])
-        # elem['pose']['orientation'][0] = elem['pose']['orientation'][0] - 90
-        # include = ET.SubElement(world, "include")
-        # ET.SubElement(include, "uri").text = "model://sign_" + \
-        #     str(elem['sign'])
-        # ET.SubElement(include, "pose").text = ' '.join(str(
-        #     e) for e in elem['pose']['position']) + ' ' + ' '.join(str(
-        #         math.radians(e)) for e in elem['pose']['orientation'])
-
-    # Add Crazyflie
-    # crazyflie_include = ET.SubElement(world, "include")
-    # ET.SubElement(crazyflie_include, "uri").text = "model://crazyflie"
-    # ET.SubElement(crazyflie_include, "pose").text = "0 0 0.03 0 0 0"
 
     # Add physics properties
     physics = ET.SubElement(
