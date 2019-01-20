@@ -1,3 +1,0 @@
-[submodule "models/aruco_gazebo"]
-	path = models/aruco_gazebo
-	url = https://github.com/joselusl/aruco_gazebo.git
