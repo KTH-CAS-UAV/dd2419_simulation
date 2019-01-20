@@ -39,8 +39,8 @@
       (even when Gazebo is started through roslaunch) -->
   <arg name="verbose" default="true"/>
 
-  <env name="GAZEBO_MODEL_PATH" value="${GAZEBO_MODEL_PATH}:$(find crazyflie_gazebo)/models"/>
-  <env name="GAZEBO_RESOURCE_PATH" value="${GAZEBO_RESOURCE_PATH}:$(find crazyflie_gazebo)/models"/>
+  <env name="GAZEBO_MODEL_PATH" value="${GAZEBO_MODEL_PATH}:$(find crazyflie_gazebo)/models:$(find dd2419_simulation)/models/signs:$(find dd2419_simulation)/models/markers"/>
+  <env name="GAZEBO_RESOURCE_PATH" value="${GAZEBO_RESOURCE_PATH}:$(find crazyflie_gazebo)/models:$(find dd2419_simulation)/models/signs:$(find dd2419_simulation)/models/markers"/>
 
   <include file="$(find gazebo_ros)/launch/empty_world.launch">
     <arg name="world_name" value="$(find dd2419_simulation)/worlds/$(arg world_name).world"/>
@@ -92,16 +92,5 @@
   <node name="map_publisher" pkg="dd2419_simulation" type="map_publisher.py" output="screen">
     <param name="json_file" value="$(find dd2419_simulation)/worlds_json/$(arg world_name).world.json"/>
   </node>
-  
-  <!-- Do not use this!!!
-  <node name="cf_arm" pkg="dd2419_simulation" type="arm.py" output="screen" >
-    <param name="cf_prefix" value="$(arg cfPrefix)1" />
-    <param name="tf_prefix" value="/$(arg tf_prefix_1)" />
-    <param name="takeoff" value="true" />
-    <param name="takeoff_height" value="0.2" />
-    <param name="takeoff_duration" value="2.0" />
-    <param name="sleep_sec_before_takeoff" value="3.0" />
-  </node>
-  -->
 
 </launch>

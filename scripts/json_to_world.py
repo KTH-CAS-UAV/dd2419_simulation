@@ -7,7 +7,7 @@ import sys
 import re
 import gates_to_walls
 import generate_gazebo_world
-import svg_to_png
+import svg_to_model
 
 
 def main(argv):
@@ -38,11 +38,11 @@ def main(argv):
     with open(sim_pkg_path + '/worlds_json/' + filename + '.json') as f:
         data = json.load(f)
 
-        svg_to_png.generate_signs(
-            sim_pkg_path, data['roadsign_size'][0], data['roadsign_size'][1])
+        svg_to_model.svg_to_model(
+            sim_pkg_path, 'sign', data['roadsign_size'][0], data['roadsign_size'][1])
 
-        svg_to_png.generate_markers(
-            sim_pkg_path, data['marker_size'][0], data['marker_size'][1])
+        svg_to_model.svg_to_model(
+            sim_pkg_path, 'marker', data['marker_size'][0], data['marker_size'][1])
 
         print("Turning gates into walls")
         # 'date =' is not necessary, but easier to read

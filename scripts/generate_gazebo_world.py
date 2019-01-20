@@ -269,9 +269,18 @@ def generate_world(save_path, data, package_path):
     ET.SubElement(airspace_visual, "transparency").text = '0.85'
 
     # Add markers from json file
+    # for elem in data['markers']:
+    #     add_marker(package_path, world, elem,
+    #                data['marker_size'][0], data['marker_size'][1])
     for elem in data['markers']:
-        add_marker(package_path, world, elem,
-                   data['marker_size'][0], data['marker_size'][1])
+        marker_include = ET.SubElement(world, "include")
+        ET.SubElement(marker_include, "uri").text = "model://" + \
+            'marker_aruco-' + str(elem['id'])
+        # Calculate pose
+        elem['pose']['orientation'][0] = elem['pose']['orientation'][0] - 90
+
+        ET.SubElement(marker_include, "pose", frame="''").text = ' '.join(str(
+            e) for e in elem['pose']['position']) + ' ' + ' '.join(str(math.radians(e)) for e in elem['pose']['orientation'])
 
     # Add walls from json file
     index = 0
@@ -281,9 +290,18 @@ def generate_world(save_path, data, package_path):
             index = index + 1
 
     # Add signs from json file
+    # for elem in data['roadsigns']:
+    #     add_sign(package_path, world, elem,
+    #              data['roadsign_size'][0], data['roadsign_size'][1])
     for elem in data['roadsigns']:
-        add_sign(package_path, world, elem,
-                 data['roadsign_size'][0], data['roadsign_size'][1])
+        sign_include = ET.SubElement(world, "include")
+        ET.SubElement(sign_include, "uri").text = "model://" + \
+            'sign_' + str(elem['sign'])
+        # Calculate pose
+        elem['pose']['orientation'][0] = elem['pose']['orientation'][0] - 90
+
+        ET.SubElement(sign_include, "pose", frame="''").text = ' '.join(str(
+            e) for e in elem['pose']['position']) + ' ' + ' '.join(str(math.radians(e)) for e in elem['pose']['orientation'])
 
     # Add physics properties
     physics = ET.SubElement(
