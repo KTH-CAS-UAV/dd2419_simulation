@@ -23,22 +23,29 @@ def gates_to_walls(data):
 
         # Right
         yield {"plane": {
-            "start": np.r_[gx, gy, 0.0] + R([-gate_width/2.0 - gate_wall_width, 0.0,         0.0]),
-            "stop":  np.r_[gx, gy, 0.0] + R([-gate_width/2.0, 0.0, gate_height])
+            "start": np.r_[gx, gy, 0.0] + R([-gate_width/2.0 - gate_wall_width, 0.0,         0.21]),
+            "stop":  np.r_[gx, gy, 0.0] + R([-gate_width/2.0, 0.0, gate_height + 0.21])
         },
             "gate": gate['id']}
 
         # Left
         yield {"plane": {
-            "start": np.r_[gx, gy, 0.0] + R([+gate_width/2.0, 0.0,         0.0]),
-            "stop":  np.r_[gx, gy, 0.0] + R([+gate_width/2.0 + gate_wall_width, 0.0, gate_height])
+            "start": np.r_[gx, gy, 0.0] + R([+gate_width/2.0, 0.0,         0.21]),
+            "stop":  np.r_[gx, gy, 0.0] + R([+gate_width/2.0 + gate_wall_width, 0.0, gate_height + 0.21])
+        },
+            "gate": gate['id']}
+
+        # Bottom
+        yield {"plane": {
+            "start": np.r_[gx, gy, 0.0] + R([-gate_width/2.0 - gate_wall_width, 0.0, 0]),
+            "stop":  np.r_[gx, gy, 0.0] + R([+gate_width/2.0 + gate_wall_width, 0.0, 0.21])
         },
             "gate": gate['id']}
 
         # Top
         yield {"plane": {
-            "start": np.r_[gx, gy, 0.0] + R([-gate_width/2.0 - gate_wall_width, 0.0, gate_height]),
-            "stop":  np.r_[gx, gy, 0.0] + R([+gate_width/2.0 + gate_wall_width, 0.0, gate_wall_height])
+            "start": np.r_[gx, gy, 0.0] + R([-gate_width/2.0 - gate_wall_width, 0.0, gate_height + 0.21]),
+            "stop":  np.r_[gx, gy, 0.0] + R([+gate_width/2.0 + gate_wall_width, 0.0, gate_wall_height + 0.21])
         },
             "gate": gate['id']}
 

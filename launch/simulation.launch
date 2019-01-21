@@ -89,10 +89,6 @@
 
   <node name="cf_sitl" pkg="dd2419_simulation" type="cf2" />
 
-  <node name="world_publisher" pkg="dd2419_simulation" type="world_publisher.py" output="screen">
-    <param name="json_file" value="$(find dd2419_resources)/worlds_json/$(arg world_name).world.json"/>
-  </node>
-
   <node name="gazebo_pose_publisher" pkg="dd2419_simulation" type="gazebo_pose_publisher.py" output="screen" />
 
   <param name="robot_description" command="$(find xacro)/xacro.py $(find crazyflie_description)/urdf/crazyflie2.urdf.xacro" />
