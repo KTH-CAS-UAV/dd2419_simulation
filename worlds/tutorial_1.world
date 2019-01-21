@@ -8,6 +8,10 @@
       <uri>model://ground_plane</uri>
       <pose>0 0 -0.001 0 0 0</pose>
     </include>
+    <include>
+      <uri>model://camera</uri>
+      <pose>0 0 -1 0 0 0</pose>
+    </include>
     <model name="airspace">
       <pose frame="">0 0 2.5 0 0 0</pose>
       <link name="link_0">
@@ -35,43 +39,43 @@
     </model>
     <include>
       <uri>model://marker_aruco-0</uri>
-      <pose frame="''">-2.0 -1.0 0.0 0.0 0.0 1.57079632679</pose>
+      <pose frame="''">-2.0 -1.0 0.0 0.0 -0.0 1.57079632679</pose>
     </include>
     <include>
       <uri>model://marker_aruco-1</uri>
-      <pose frame="''">-1.5 -1.0 0.0 0.0 0.0 1.57079632679</pose>
+      <pose frame="''">-1.5 -1.0 0.0 0.0 -0.0 1.57079632679</pose>
     </include>
     <include>
       <uri>model://marker_aruco-2</uri>
-      <pose frame="''">-1.0 -1.0 0.0 0.0 0.0 1.57079632679</pose>
+      <pose frame="''">-1.0 -1.0 0.0 0.0 -0.0 1.57079632679</pose>
     </include>
     <include>
       <uri>model://marker_aruco-3</uri>
-      <pose frame="''">-0.5 -1.0 0.0 0.0 0.0 1.57079632679</pose>
+      <pose frame="''">-0.5 -1.0 0.0 0.0 -0.0 1.57079632679</pose>
     </include>
     <include>
       <uri>model://marker_aruco-4</uri>
-      <pose frame="''">0.0 -1.0 0.0 0.0 0.0 1.57079632679</pose>
+      <pose frame="''">0.0 -1.0 0.0 0.0 -0.0 1.57079632679</pose>
     </include>
     <include>
       <uri>model://marker_aruco-5</uri>
-      <pose frame="''">0.5 -1.0 0.0 0.0 0.0 1.57079632679</pose>
+      <pose frame="''">0.5 -1.0 0.0 0.0 -0.0 1.57079632679</pose>
     </include>
     <include>
       <uri>model://marker_aruco-6</uri>
-      <pose frame="''">1.0 -1.0 0.0 0.0 0.0 1.57079632679</pose>
+      <pose frame="''">1.0 -1.0 0.0 0.0 -0.0 1.57079632679</pose>
     </include>
     <include>
       <uri>model://marker_aruco-7</uri>
-      <pose frame="''">1.5 -1.0 0.0 0.0 0.0 1.57079632679</pose>
+      <pose frame="''">1.5 -1.0 0.0 0.0 -0.0 1.57079632679</pose>
     </include>
     <include>
       <uri>model://marker_aruco-8</uri>
-      <pose frame="''">2.0 -1.0 0.0 0.0 0.0 1.57079632679</pose>
+      <pose frame="''">2.0 -1.0 0.0 0.0 -0.0 1.57079632679</pose>
     </include>
     <include>
       <uri>model://marker_aruco-9</uri>
-      <pose frame="''">2.5 -1.0 0.0 0.0 0.0 1.57079632679</pose>
+      <pose frame="''">2.5 -1.0 0.0 0.0 -0.0 1.57079632679</pose>
     </include>
     <model name="wall_0">
       <pose frame="''">0 0 0 0 0 0</pose>
@@ -213,7 +217,7 @@
         <self_collide>0</self_collide>
         <kinematic>1</kinematic>
         <visual name="gate_0_visual_0">
-          <pose frame="">5.0 0.25 0.2 0 0 -1.57079632679</pose>
+          <pose frame="">5.0 0.25 0.41 0 0 -1.57079632679</pose>
           <geometry>
             <box>
               <size>0.1 0.02 0.4</size>
@@ -229,7 +233,7 @@
           <transparency>0</transparency>
         </visual>
         <collision name="gate_0_collision_0">
-          <pose frame="">5.0 0.25 0.2 0 0 -1.57079632679</pose>
+          <pose frame="">5.0 0.25 0.41 0 0 -1.57079632679</pose>
           <geometry>
             <box>
               <size>0.1 0.02 0.4</size>
@@ -241,7 +245,7 @@
         <self_collide>0</self_collide>
         <kinematic>1</kinematic>
         <visual name="gate_0_visual_1">
-          <pose frame="">5.0 -0.25 0.2 0 0 -1.57079632679</pose>
+          <pose frame="">5.0 -0.25 0.41 0 0 -1.57079632679</pose>
           <geometry>
             <box>
               <size>0.1 0.02 0.4</size>
@@ -257,7 +261,7 @@
           <transparency>0</transparency>
         </visual>
         <collision name="gate_0_collision_1">
-          <pose frame="">5.0 -0.25 0.2 0 0 -1.57079632679</pose>
+          <pose frame="">5.0 -0.25 0.41 0 0 -1.57079632679</pose>
           <geometry>
             <box>
               <size>0.1 0.02 0.4</size>
@@ -269,7 +273,35 @@
         <self_collide>0</self_collide>
         <kinematic>1</kinematic>
         <visual name="gate_0_visual_2">
-          <pose frame="">5.0 0.0 1.2 0 0 -1.57079632679</pose>
+          <pose frame="">5.0 0.0 0.105 0 0 -1.57079632679</pose>
+          <geometry>
+            <box>
+              <size>0.6 0.02 0.21</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/DarkOrangeTransparentOverlay</name>
+            </script>
+          </material>
+          <cast_shadows>1</cast_shadows>
+          <transparency>0</transparency>
+        </visual>
+        <collision name="gate_0_collision_2">
+          <pose frame="">5.0 0.0 0.105 0 0 -1.57079632679</pose>
+          <geometry>
+            <box>
+              <size>0.6 0.02 0.21</size>
+            </box>
+          </geometry>
+        </collision>
+        <pose frame="">0 0 0 0 0 0</pose>
+        <gravity>0</gravity>
+        <self_collide>0</self_collide>
+        <kinematic>1</kinematic>
+        <visual name="gate_0_visual_3">
+          <pose frame="">5.0 0.0 1.41 0 0 -1.57079632679</pose>
           <geometry>
             <box>
               <size>0.6 0.02 1.6</size>
@@ -284,8 +316,8 @@
           <cast_shadows>1</cast_shadows>
           <transparency>0</transparency>
         </visual>
-        <collision name="gate_0_collision_2">
-          <pose frame="">5.0 0.0 1.2 0 0 -1.57079632679</pose>
+        <collision name="gate_0_collision_3">
+          <pose frame="">5.0 0.0 1.41 0 0 -1.57079632679</pose>
           <geometry>
             <box>
               <size>0.6 0.02 1.6</size>
@@ -302,7 +334,7 @@
         <self_collide>0</self_collide>
         <kinematic>1</kinematic>
         <visual name="gate_1_visual_0">
-          <pose frame="">-0.25 3.0 0.2 0 0 0.0</pose>
+          <pose frame="">-0.25 3.0 0.41 0 0 0.0</pose>
           <geometry>
             <box>
               <size>0.1 0.02 0.4</size>
@@ -318,7 +350,7 @@
           <transparency>0</transparency>
         </visual>
         <collision name="gate_1_collision_0">
-          <pose frame="">-0.25 3.0 0.2 0 0 0.0</pose>
+          <pose frame="">-0.25 3.0 0.41 0 0 0.0</pose>
           <geometry>
             <box>
               <size>0.1 0.02 0.4</size>
@@ -330,7 +362,7 @@
         <self_collide>0</self_collide>
         <kinematic>1</kinematic>
         <visual name="gate_1_visual_1">
-          <pose frame="">0.25 3.0 0.2 0 0 0.0</pose>
+          <pose frame="">0.25 3.0 0.41 0 0 0.0</pose>
           <geometry>
             <box>
               <size>0.1 0.02 0.4</size>
@@ -346,7 +378,7 @@
           <transparency>0</transparency>
         </visual>
         <collision name="gate_1_collision_1">
-          <pose frame="">0.25 3.0 0.2 0 0 0.0</pose>
+          <pose frame="">0.25 3.0 0.41 0 0 0.0</pose>
           <geometry>
             <box>
               <size>0.1 0.02 0.4</size>
@@ -358,7 +390,35 @@
         <self_collide>0</self_collide>
         <kinematic>1</kinematic>
         <visual name="gate_1_visual_2">
-          <pose frame="">0.0 3.0 1.2 0 0 0.0</pose>
+          <pose frame="">0.0 3.0 0.105 0 0 0.0</pose>
+          <geometry>
+            <box>
+              <size>0.6 0.02 0.21</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/DarkOrangeTransparentOverlay</name>
+            </script>
+          </material>
+          <cast_shadows>1</cast_shadows>
+          <transparency>0</transparency>
+        </visual>
+        <collision name="gate_1_collision_2">
+          <pose frame="">0.0 3.0 0.105 0 0 0.0</pose>
+          <geometry>
+            <box>
+              <size>0.6 0.02 0.21</size>
+            </box>
+          </geometry>
+        </collision>
+        <pose frame="">0 0 0 0 0 0</pose>
+        <gravity>0</gravity>
+        <self_collide>0</self_collide>
+        <kinematic>1</kinematic>
+        <visual name="gate_1_visual_3">
+          <pose frame="">0.0 3.0 1.41 0 0 0.0</pose>
           <geometry>
             <box>
               <size>0.6 0.02 1.6</size>
@@ -373,8 +433,8 @@
           <cast_shadows>1</cast_shadows>
           <transparency>0</transparency>
         </visual>
-        <collision name="gate_1_collision_2">
-          <pose frame="">0.0 3.0 1.2 0 0 0.0</pose>
+        <collision name="gate_1_collision_3">
+          <pose frame="">0.0 3.0 1.41 0 0 0.0</pose>
           <geometry>
             <box>
               <size>0.6 0.02 1.6</size>
@@ -391,7 +451,7 @@
         <self_collide>0</self_collide>
         <kinematic>1</kinematic>
         <visual name="gate_2_visual_0">
-          <pose frame="">-5.0 -0.25 0.2 0 0 1.57079632679</pose>
+          <pose frame="">-5.0 -0.25 0.41 0 0 1.57079632679</pose>
           <geometry>
             <box>
               <size>0.1 0.02 0.4</size>
@@ -407,7 +467,7 @@
           <transparency>0</transparency>
         </visual>
         <collision name="gate_2_collision_0">
-          <pose frame="">-5.0 -0.25 0.2 0 0 1.57079632679</pose>
+          <pose frame="">-5.0 -0.25 0.41 0 0 1.57079632679</pose>
           <geometry>
             <box>
               <size>0.1 0.02 0.4</size>
@@ -419,7 +479,7 @@
         <self_collide>0</self_collide>
         <kinematic>1</kinematic>
         <visual name="gate_2_visual_1">
-          <pose frame="">-5.0 0.25 0.2 0 0 1.57079632679</pose>
+          <pose frame="">-5.0 0.25 0.41 0 0 1.57079632679</pose>
           <geometry>
             <box>
               <size>0.1 0.02 0.4</size>
@@ -435,7 +495,7 @@
           <transparency>0</transparency>
         </visual>
         <collision name="gate_2_collision_1">
-          <pose frame="">-5.0 0.25 0.2 0 0 1.57079632679</pose>
+          <pose frame="">-5.0 0.25 0.41 0 0 1.57079632679</pose>
           <geometry>
             <box>
               <size>0.1 0.02 0.4</size>
@@ -447,7 +507,35 @@
         <self_collide>0</self_collide>
         <kinematic>1</kinematic>
         <visual name="gate_2_visual_2">
-          <pose frame="">-5.0 0.0 1.2 0 0 1.57079632679</pose>
+          <pose frame="">-5.0 0.0 0.105 0 0 1.57079632679</pose>
+          <geometry>
+            <box>
+              <size>0.6 0.02 0.21</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/DarkOrangeTransparentOverlay</name>
+            </script>
+          </material>
+          <cast_shadows>1</cast_shadows>
+          <transparency>0</transparency>
+        </visual>
+        <collision name="gate_2_collision_2">
+          <pose frame="">-5.0 0.0 0.105 0 0 1.57079632679</pose>
+          <geometry>
+            <box>
+              <size>0.6 0.02 0.21</size>
+            </box>
+          </geometry>
+        </collision>
+        <pose frame="">0 0 0 0 0 0</pose>
+        <gravity>0</gravity>
+        <self_collide>0</self_collide>
+        <kinematic>1</kinematic>
+        <visual name="gate_2_visual_3">
+          <pose frame="">-5.0 0.0 1.41 0 0 1.57079632679</pose>
           <geometry>
             <box>
               <size>0.6 0.02 1.6</size>
@@ -462,8 +550,8 @@
           <cast_shadows>1</cast_shadows>
           <transparency>0</transparency>
         </visual>
-        <collision name="gate_2_collision_2">
-          <pose frame="">-5.0 0.0 1.2 0 0 1.57079632679</pose>
+        <collision name="gate_2_collision_3">
+          <pose frame="">-5.0 0.0 1.41 0 0 1.57079632679</pose>
           <geometry>
             <box>
               <size>0.6 0.02 1.6</size>
@@ -480,7 +568,7 @@
         <self_collide>0</self_collide>
         <kinematic>1</kinematic>
         <visual name="gate_3_visual_0">
-          <pose frame="">0.25 -3.0 0.2 0 0 3.14159265359</pose>
+          <pose frame="">0.25 -3.0 0.41 0 0 3.14159265359</pose>
           <geometry>
             <box>
               <size>0.1 0.02 0.4</size>
@@ -496,7 +584,7 @@
           <transparency>0</transparency>
         </visual>
         <collision name="gate_3_collision_0">
-          <pose frame="">0.25 -3.0 0.2 0 0 3.14159265359</pose>
+          <pose frame="">0.25 -3.0 0.41 0 0 3.14159265359</pose>
           <geometry>
             <box>
               <size>0.1 0.02 0.4</size>
@@ -508,7 +596,7 @@
         <self_collide>0</self_collide>
         <kinematic>1</kinematic>
         <visual name="gate_3_visual_1">
-          <pose frame="">-0.25 -3.0 0.2 0 0 3.14159265359</pose>
+          <pose frame="">-0.25 -3.0 0.41 0 0 3.14159265359</pose>
           <geometry>
             <box>
               <size>0.1 0.02 0.4</size>
@@ -524,7 +612,7 @@
           <transparency>0</transparency>
         </visual>
         <collision name="gate_3_collision_1">
-          <pose frame="">-0.25 -3.0 0.2 0 0 3.14159265359</pose>
+          <pose frame="">-0.25 -3.0 0.41 0 0 3.14159265359</pose>
           <geometry>
             <box>
               <size>0.1 0.02 0.4</size>
@@ -536,7 +624,35 @@
         <self_collide>0</self_collide>
         <kinematic>1</kinematic>
         <visual name="gate_3_visual_2">
-          <pose frame="">0.0 -3.0 1.2 0 0 3.14159265359</pose>
+          <pose frame="">0.0 -3.0 0.105 0 0 3.14159265359</pose>
+          <geometry>
+            <box>
+              <size>0.6 0.02 0.21</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/DarkOrangeTransparentOverlay</name>
+            </script>
+          </material>
+          <cast_shadows>1</cast_shadows>
+          <transparency>0</transparency>
+        </visual>
+        <collision name="gate_3_collision_2">
+          <pose frame="">0.0 -3.0 0.105 0 0 3.14159265359</pose>
+          <geometry>
+            <box>
+              <size>0.6 0.02 0.21</size>
+            </box>
+          </geometry>
+        </collision>
+        <pose frame="">0 0 0 0 0 0</pose>
+        <gravity>0</gravity>
+        <self_collide>0</self_collide>
+        <kinematic>1</kinematic>
+        <visual name="gate_3_visual_3">
+          <pose frame="">0.0 -3.0 1.41 0 0 3.14159265359</pose>
           <geometry>
             <box>
               <size>0.6 0.02 1.6</size>
@@ -551,8 +667,8 @@
           <cast_shadows>1</cast_shadows>
           <transparency>0</transparency>
         </visual>
-        <collision name="gate_3_collision_2">
-          <pose frame="">0.0 -3.0 1.2 0 0 3.14159265359</pose>
+        <collision name="gate_3_collision_3">
+          <pose frame="">0.0 -3.0 1.41 0 0 3.14159265359</pose>
           <geometry>
             <box>
               <size>0.6 0.02 1.6</size>
@@ -563,63 +679,63 @@
     </model>
     <include>
       <uri>model://sign_airport</uri>
-      <pose frame="''">-3.5 1.0 0.0 0.0 0.0 1.57079632679</pose>
+      <pose frame="''">-3.5 1.0 0.0 0.0 -0.0 1.57079632679</pose>
     </include>
     <include>
       <uri>model://sign_dangerous_curve_left</uri>
-      <pose frame="''">-3.0 1.0 0.0 0.0 0.0 1.57079632679</pose>
+      <pose frame="''">-3.0 1.0 0.0 0.0 -0.0 1.57079632679</pose>
     </include>
     <include>
       <uri>model://sign_dangerous_curve_right</uri>
-      <pose frame="''">-2.5 1.0 0.0 0.0 0.0 1.57079632679</pose>
+      <pose frame="''">-2.5 1.0 0.0 0.0 -0.0 1.57079632679</pose>
     </include>
     <include>
       <uri>model://sign_follow_left</uri>
-      <pose frame="''">-2.0 1.0 0.0 0.0 0.0 1.57079632679</pose>
+      <pose frame="''">-2.0 1.0 0.0 0.0 -0.0 1.57079632679</pose>
     </include>
     <include>
       <uri>model://sign_follow_right</uri>
-      <pose frame="''">-1.5 1.0 0.0 0.0 0.0 1.57079632679</pose>
+      <pose frame="''">-1.5 1.0 0.0 0.0 -0.0 1.57079632679</pose>
     </include>
     <include>
       <uri>model://sign_junction</uri>
-      <pose frame="''">-1.0 1.0 0.0 0.0 0.0 1.57079632679</pose>
+      <pose frame="''">-1.0 1.0 0.0 0.0 -0.0 1.57079632679</pose>
     </include>
     <include>
       <uri>model://sign_no_bicycle</uri>
-      <pose frame="''">-0.5 1.0 0.0 0.0 0.0 1.57079632679</pose>
+      <pose frame="''">-0.5 1.0 0.0 0.0 -0.0 1.57079632679</pose>
     </include>
     <include>
       <uri>model://sign_no_heavy_truck</uri>
-      <pose frame="''">0.0 1.0 0.0 0.0 0.0 1.57079632679</pose>
+      <pose frame="''">0.0 1.0 0.0 0.0 -0.0 1.57079632679</pose>
     </include>
     <include>
       <uri>model://sign_no_parking</uri>
-      <pose frame="''">0.5 1.0 0.0 0.0 0.0 1.57079632679</pose>
+      <pose frame="''">0.5 1.0 0.0 0.0 -0.0 1.57079632679</pose>
     </include>
     <include>
       <uri>model://sign_no_stopping_and_parking</uri>
-      <pose frame="''">1.0 1.0 0.0 0.0 0.0 1.57079632679</pose>
+      <pose frame="''">1.0 1.0 0.0 0.0 -0.0 1.57079632679</pose>
     </include>
     <include>
       <uri>model://sign_residential</uri>
-      <pose frame="''">1.5 1.0 0.0 0.0 0.0 1.57079632679</pose>
+      <pose frame="''">1.5 1.0 0.0 0.0 -0.0 1.57079632679</pose>
     </include>
     <include>
       <uri>model://sign_road_narrows_from_left</uri>
-      <pose frame="''">2.0 1.0 0.0 0.0 0.0 1.57079632679</pose>
+      <pose frame="''">2.0 1.0 0.0 0.0 -0.0 1.57079632679</pose>
     </include>
     <include>
       <uri>model://sign_road_narrows_from_right</uri>
-      <pose frame="''">2.5 1.0 0.0 0.0 0.0 1.57079632679</pose>
+      <pose frame="''">2.5 1.0 0.0 0.0 -0.0 1.57079632679</pose>
     </include>
     <include>
       <uri>model://sign_roundabout_warning</uri>
-      <pose frame="''">3.0 1.0 0.0 0.0 0.0 1.57079632679</pose>
+      <pose frame="''">3.0 1.0 0.0 0.0 -0.0 1.57079632679</pose>
     </include>
     <include>
       <uri>model://sign_stop</uri>
-      <pose frame="''">3.5 1.0 0.0 0.0 0.0 1.57079632679</pose>
+      <pose frame="''">3.5 1.0 0.0 0.0 -0.0 1.57079632679</pose>
     </include>
     <physics default="0" name="default_physics" type="ode">
       <gravity>0 0 -9.8066</gravity>

@@ -24,7 +24,7 @@ def gazebo_pose_publisher():
 
     rospy.wait_for_service('/gazebo/get_model_state')
 
-    rate = rospy.Rate(30)  # 30 Hz
+    rate = rospy.Rate(20)  # 20 Hz
     while not rospy.is_shutdown():
         service = rospy.ServiceProxy('/gazebo/get_model_state', GetModelState)
         try:
