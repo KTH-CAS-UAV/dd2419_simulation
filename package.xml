@@ -48,8 +48,13 @@
   <!--   <doc_depend>doxygen</doc_depend> -->
   <buildtool_depend>catkin</buildtool_depend>
   <depend>crazyflie_gazebo</depend>
+  <depend>dd2419_resources</depend>
+  <depend>gazebo_msgs</depend>
+  <depend>geometry_msgs</depend>
+  <depend>nav_msgs</depend>
   <depend>rospy</depend>
   <depend>tf</depend>
+  <depend>tf2_ros</depend>
   <depend>visualization_msgs</depend>
 
 

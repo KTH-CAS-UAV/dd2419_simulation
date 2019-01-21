@@ -1,5 +1,9 @@
 #!/usr/bin/env python
 
+"""
+    @author: Daniel Duberg (dduberg@kth.se)
+"""
+
 import rospy
 import json
 import gates_to_walls
@@ -9,11 +13,11 @@ import tf
 import math
 
 
-def add_airspace(markers, data):
+def add_ground(markers, data):
     marker = Marker()
     marker.header.frame_id = "map"
     marker.header.stamp = rospy.Time.now()
-    marker.ns = "map/airspace"
+    marker.ns = "ground"
     marker.id = 0
     marker.type = Marker.CUBE
     marker.action = Marker.ADD
@@ -21,8 +25,35 @@ def add_airspace(markers, data):
         data['airspace']['min'][0] + data['airspace']['max'][0]) / 2
     marker.pose.position.y = (
         data['airspace']['min'][1] + data['airspace']['max'][1]) / 2
-    marker.pose.position.z = (
-        data['airspace']['min'][2] + data['airspace']['max'][2]) / 2
+    marker.pose.position.z = -1e-3
+    marker.pose.orientation.x = 0
+    marker.pose.orientation.y = 0
+    marker.pose.orientation.z = 0
+    marker.pose.orientation.w = 1
+    marker.scale.x = data['airspace']['max'][0] - data['airspace']['min'][0]
+    marker.scale.y = data['airspace']['max'][1] - data['airspace']['min'][1]
+    marker.scale.z = 1e-4
+    marker.color.a = 1.0
+    marker.color.r = 0.8
+    marker.color.g = 0.8
+    marker.color.b = 0.8
+    markers.markers.append(marker)
+
+
+def add_airspace(markers, data):
+    marker = Marker()
+    marker.header.frame_id = "map"
+    marker.header.stamp = rospy.Time.now()
+    marker.ns = "airspace"
+    marker.id = 0
+    marker.type = Marker.CUBE
+    marker.action = Marker.ADD
+    marker.pose.position.x = (
+        data['airspace']['min'][0] + data['airspace']['max'][0]) / 2
+    marker.pose.position.y = (
+        data['airspace']['min'][1] + data['airspace']['max'][1]) / 2
+    marker.pose.position.z = ((
+        data['airspace']['min'][2] + data['airspace']['max'][2]) / 2)
     marker.pose.orientation.x = 0
     marker.pose.orientation.y = 0
     marker.pose.orientation.z = 0
@@ -39,7 +70,7 @@ def add_airspace(markers, data):
     marker_text = Marker()
     marker_text.header.frame_id = "map"
     marker_text.header.stamp = rospy.Time.now()
-    marker_text.ns = "map/airspace_text"
+    marker_text.ns = "airspace_text"
     marker_text.id = 0
     marker_text.type = Marker.TEXT_VIEW_FACING
     marker_text.text = 'airspace'
@@ -72,7 +103,7 @@ def add_markers(markers, data):
         marker = Marker()
         marker.header.frame_id = "map"
         marker.header.stamp = rospy.Time.now()
-        marker.ns = "map/markers"
+        marker.ns = "markers"
         marker.id = elem['id']
         marker.type = Marker.CUBE
         marker.action = Marker.ADD
@@ -99,7 +130,7 @@ def add_markers(markers, data):
         marker_text = Marker()
         marker_text.header.frame_id = "map"
         marker_text.header.stamp = rospy.Time.now()
-        marker_text.ns = "map/markers_text"
+        marker_text.ns = "markers_text"
         marker_text.id = elem['id']
         marker_text.type = Marker.TEXT_VIEW_FACING
         marker_text.text = str(elem['id'])
@@ -131,7 +162,7 @@ def add_signs(markers, data):
         marker = Marker()
         marker.header.frame_id = "map"
         marker.header.stamp = rospy.Time.now()
-        marker.ns = "map/signs"
+        marker.ns = "signs"
         marker.id = idx
         marker.type = Marker.CUBE
         marker.action = Marker.ADD
@@ -158,7 +189,7 @@ def add_signs(markers, data):
         marker_text = Marker()
         marker_text.header.frame_id = "map"
         marker_text.header.stamp = rospy.Time.now()
-        marker_text.ns = "map/signs_text"
+        marker_text.ns = "signs_text"
         marker_text.id = idx
         marker_text.type = Marker.TEXT_VIEW_FACING
         marker_text.text = str(elem['sign'])
@@ -191,9 +222,9 @@ def add_walls(markers, data):
         marker.header.frame_id = "map"
         marker.header.stamp = rospy.Time.now()
         if 'gate' in elem:
-            marker.ns = "map/gates"
+            marker.ns = "gates"
         else:
-            marker.ns = "map/walls"
+            marker.ns = "walls"
         marker.id = idx
         marker.type = Marker.CUBE
         marker.action = Marker.ADD
@@ -230,7 +261,7 @@ def add_walls(markers, data):
             marker = Marker()
             marker.header.frame_id = "map"
             marker.header.stamp = rospy.Time.now()
-            marker.ns = "map/gates"
+            marker.ns = "gates"
             marker.id = idx + 1000
             marker.type = Marker.CUBE
             marker.action = Marker.ADD
@@ -263,7 +294,7 @@ def add_walls(markers, data):
             marker_text = Marker()
             marker_text.header.frame_id = "map"
             marker_text.header.stamp = rospy.Time.now()
-            marker_text.ns = "map/gates_text"
+            marker_text.ns = "gates_text"
             marker_text.id = elem['gate']
             marker_text.type = Marker.TEXT_VIEW_FACING
             marker_text.text = 'gate ' + str(elem['gate'])
@@ -292,9 +323,9 @@ def add_walls(markers, data):
             markers.markers.append(marker_text)
 
 
-def map_publisher():
-    pub = rospy.Publisher('map', MarkerArray, queue_size=10, latch=True)
-    rospy.init_node('map_publisher', anonymous=True)
+def world_publisher():
+    pub = rospy.Publisher('world', MarkerArray, queue_size=10, latch=True)
+    rospy.init_node('world_publisher', anonymous=True)
 
     markers = MarkerArray()
 
@@ -304,6 +335,8 @@ def map_publisher():
         # 'date =' is not necessary, but easier to read
         data = gates_to_walls.gates_to_walls(data)
 
+        add_ground(markers, data)
+
         add_airspace(markers, data)
 
         add_markers(markers, data)
@@ -312,7 +345,7 @@ def map_publisher():
 
         add_walls(markers, data)
 
-    rate = rospy.Rate(10)  # 10hz
+    rate = rospy.Rate(1)  # 1 Hz
     while not rospy.is_shutdown():
         pub.publish(markers)
         rate.sleep()
@@ -322,6 +355,6 @@ def map_publisher():
 
 if __name__ == '__main__':
     try:
-        map_publisher()
+        world_publisher()
     except rospy.ROSInterruptException:
         pass

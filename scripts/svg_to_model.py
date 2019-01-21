@@ -1,5 +1,9 @@
 #!/usr/bin/env python
 
+"""
+    @author: Daniel Duberg (dduberg@kth.se)
+"""
+
 from __future__ import print_function, unicode_literals
 import re
 import os
@@ -105,9 +109,9 @@ def write_model(output_path, object_type, object_name, width, height):
                encoding="utf-8", xml_declaration=True)
 
 
-def svg_to_model(root_path, object_type, width, height):
-    load_dir = root_path + '/svg/' + str(object_type) + 's/'
-    save_dir = root_path + '/models/' + str(object_type) + 's/'
+def svg_to_model(load_path, save_path, object_type, width, height):
+    load_dir = load_path + '/svg/' + str(object_type) + 's/'
+    save_dir = save_path + '/models/' + str(object_type) + 's/'
 
     for file in os.listdir(load_dir):
         if len(file) > 4 and file[-4:] == '.svg':

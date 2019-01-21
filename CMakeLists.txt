@@ -9,8 +9,13 @@ project(dd2419_simulation)
 ## is used, also find other catkin packages
 find_package(catkin REQUIRED COMPONENTS
     crazyflie_gazebo
+    dd2419_resources
+    gazebo_msgs
+    geometry_msgs
+    nav_msgs
     rospy
     tf
+    tf2_ros
     visualization_msgs
 )
 
