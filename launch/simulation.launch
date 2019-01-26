@@ -7,7 +7,15 @@
   <arg name="gui" default="true"/>
   <arg name="paused" default="false"/>
 
+  <!-- Camera arguments -->
   <arg name="enable_camera" default="true" />
+  <arg name="camera_fps" default="60.0" />
+  <arg name="camera_hfov" default="1.83259571" />
+  <arg name="camera_image_width" default="640" />
+  <arg name="camera_image_height" default="480" />
+  <arg name="camera_min_distance" default="0.1" />
+  <arg name="camera_max_distance" default="100" />
+  <arg name="camera_noise_stddev" default="0.01" />
 
   <arg name="only_command" default="false" />
 
@@ -73,6 +81,13 @@
       <arg name="y" default="$(arg y_1)"/>
       <arg name="z" default="$(arg z_1)"/>
       <arg name="enable_camera" default="$(arg enable_camera)"/>
+      <arg name="camera_fps" default="$(arg camera_fps)" />
+      <arg name="camera_hfov" default="$(arg camera_hfov)" />
+      <arg name="camera_image_width" default="$(arg camera_image_width)" />
+      <arg name="camera_image_height" default="$(arg camera_image_height)" />
+      <arg name="camera_min_distance" default="$(arg camera_min_distance)" />
+      <arg name="camera_max_distance" default="$(arg camera_max_distance)" />
+      <arg name="camera_noise_stddev" default="$(arg camera_noise_stddev)" />
     </include>
   </group>
 
