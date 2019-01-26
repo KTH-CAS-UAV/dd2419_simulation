@@ -7,6 +7,8 @@
   <arg name="gui" default="true"/>
   <arg name="paused" default="false"/>
 
+  <arg name="enable_camera" default="true" />
+
   <arg name="only_command" default="false" />
 
   <!--  Handler Arguments       -->
@@ -42,8 +44,16 @@
   <env name="GAZEBO_MODEL_PATH" value="${GAZEBO_MODEL_PATH}:$(find crazyflie_gazebo)/models:$(find dd2419_simulation)/models/signs:$(find dd2419_simulation)/models/markers"/>
   <env name="GAZEBO_RESOURCE_PATH" value="${GAZEBO_RESOURCE_PATH}:$(find crazyflie_gazebo)/models:$(find dd2419_simulation)/models/signs:$(find dd2419_simulation)/models/markers"/>
 
-  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+  <include file="$(find gazebo_ros)/launch/empty_world.launch" if="$(arg enable_camera)">
     <arg name="world_name" value="$(find dd2419_simulation)/worlds/$(arg world_name).world"/>
+    <arg name="debug" value="$(arg debug)" />
+    <arg name="paused" value="$(arg paused)" />
+    <arg name="gui" value="$(arg gui)" />
+    <arg name="verbose" value="$(arg verbose)"/>
+  </include>
+
+  <include file="$(find gazebo_ros)/launch/empty_world.launch" unless="$(arg enable_camera)">
+    <arg name="world_name" value="$(find dd2419_simulation)/worlds/no_camera/$(arg world_name).world"/>
     <arg name="debug" value="$(arg debug)" />
     <arg name="paused" value="$(arg paused)" />
     <arg name="gui" value="$(arg gui)" />
@@ -62,6 +72,7 @@
       <arg name="x" default="$(arg x_1)"/>
       <arg name="y" default="$(arg y_1)"/>
       <arg name="z" default="$(arg z_1)"/>
+      <arg name="enable_camera" default="$(arg enable_camera)"/>
     </include>
   </group>
 

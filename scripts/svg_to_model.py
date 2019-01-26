@@ -9,6 +9,7 @@ import re
 import os
 from subprocess import call
 import xml.etree.cElementTree as ET
+import subprocess
 
 max_res = 512
 
@@ -123,17 +124,23 @@ def svg_to_model(load_path, save_path, object_type, width, height):
             if not os.path.exists(script_path):
                 os.makedirs(script_path)
 
-            full_res_width = str(max_res * min((width / height), 1))
-            full_res_height = str(max_res * min((height / width), 1))
+            full_res_width = str(int(max_res * min((width / height), 1)))
+            full_res_height = str(int(max_res * min((height / width), 1)))
             object_res_width = full_res_width
             object_res_height = full_res_height
 
             background = 'transparent'
 
-            command = 'convert -background ' + background + ' ' + load_dir + file + \
+            command = 'inkscape -d 200 -f ' + load_dir + \
+                file + ' -e ' + texture_path + filename + '.png'
+            subprocess.check_output(
+                command, shell=True, stderr=subprocess.STDOUT)
+
+            command = 'convert -background ' + background + ' ' + texture_path + filename + '.png' + \
                 ' -resize ' + object_res_width + 'x' + object_res_height + ' -background ' + background + ' -gravity center -extent ' + full_res_width + 'x' + full_res_height + ' ' + \
-                texture_path + filename
-            os.system(command)
+                texture_path + filename + '.png'
+            subprocess.check_output(
+                command, shell=True, stderr=subprocess.STDOUT)
 
             with open(script_path + re.sub('\.svg$', '.material', file), 'w') as f:
                 f.write('material ' + object_type + '_' +
