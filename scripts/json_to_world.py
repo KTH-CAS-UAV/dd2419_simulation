@@ -25,7 +25,7 @@ def how_to_use(json_path, default_physics_iterations):
     print('Where OPTION is one of:')
     print('    -a, --all                            Process all JSON files found')
     print('    -h, --help                           Displays this usage text')
-    print('    -i, --iterations NUM_ITERATIONS      Where NUM_ITERATIONS are the number of iterations for the physics engine. Default: ' +
+    print('    -i, --iterations NUM_ITERATIONS      Where NUM_ITERATIONS is the number of iterations for the physics engine. Default: ' +
           str(default_physics_iterations))
     print('')
     print('Where FILENAME is one of:')
