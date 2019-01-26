@@ -52,6 +52,7 @@
   <env name="GAZEBO_MODEL_PATH" value="${GAZEBO_MODEL_PATH}:$(find crazyflie_gazebo)/models:$(find dd2419_simulation)/models/signs:$(find dd2419_simulation)/models/markers"/>
   <env name="GAZEBO_RESOURCE_PATH" value="${GAZEBO_RESOURCE_PATH}:$(find crazyflie_gazebo)/models:$(find dd2419_simulation)/models/signs:$(find dd2419_simulation)/models/markers"/>
 
+  <!-- Camera -->
   <include file="$(find gazebo_ros)/launch/empty_world.launch" if="$(arg enable_camera)">
     <arg name="world_name" value="$(find dd2419_simulation)/worlds/$(arg world_name).world"/>
     <arg name="debug" value="$(arg debug)" />
@@ -60,6 +61,7 @@
     <arg name="verbose" value="$(arg verbose)"/>
   </include>
 
+  <!-- No camera -->
   <include file="$(find gazebo_ros)/launch/empty_world.launch" unless="$(arg enable_camera)">
     <arg name="world_name" value="$(find dd2419_simulation)/worlds/no_camera/$(arg world_name).world"/>
     <arg name="debug" value="$(arg debug)" />
