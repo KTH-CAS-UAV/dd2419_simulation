@@ -15,7 +15,7 @@
   <arg name="camera_image_height" default="480" />
   <arg name="camera_min_distance" default="0.1" />
   <arg name="camera_max_distance" default="100" />
-  <arg name="camera_noise_stddev" default="0.01" />
+  <arg name="camera_noise_stddev" default="0.00001" />
 
   <arg name="only_command" default="false" />
 
