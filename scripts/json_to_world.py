@@ -20,7 +20,7 @@ def how_to_use(json_path, default_physics_iterations):
     file_type_length = len('.json')
     print('')
     print(
-        'USAGE: rosrun dd2419_simulation json_to_world.py [OPTION [OPTION ...]] FILENAME')
+        'USAGE: rosrun dd2419_simulation json_to_world.py [OPTION [OPTION ...]] [FILENAME]')
     print('')
     print('Where OPTION is one of:')
     print('    -a, --all                            Process all JSON files found')
