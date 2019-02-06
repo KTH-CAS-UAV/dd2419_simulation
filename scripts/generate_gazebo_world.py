@@ -143,7 +143,6 @@ def generate_world(save_path, filename, data, package_path, physics_iterations):
             'marker_aruco-' + str(elem['id'])
         # Calculate pose
         elem['pose']['orientation'][0] = elem['pose']['orientation'][0] - 90
-        elem['pose']['orientation'][1] = -elem['pose']['orientation'][1]
 
         ET.SubElement(marker_include, "pose", frame="''").text = ' '.join(str(
             e) for e in elem['pose']['position']) + ' ' + ' '.join(str(math.radians(e)) for e in elem['pose']['orientation'])
@@ -162,7 +161,6 @@ def generate_world(save_path, filename, data, package_path, physics_iterations):
             'sign_' + str(elem['sign'])
         # Calculate pose
         elem['pose']['orientation'][0] = elem['pose']['orientation'][0] - 90
-        elem['pose']['orientation'][1] = -elem['pose']['orientation'][1]
 
         ET.SubElement(sign_include, "pose", frame="''").text = ' '.join(str(
             e) for e in elem['pose']['position']) + ' ' + ' '.join(str(math.radians(e)) for e in elem['pose']['orientation'])
