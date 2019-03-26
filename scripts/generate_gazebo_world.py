@@ -8,6 +8,7 @@ from __future__ import print_function, unicode_literals
 import xml.etree.cElementTree as ET
 import math
 import re
+import numpy as np
 
 
 def indent(elem, level=0):
@@ -143,6 +144,13 @@ def generate_world(save_path, filename, data, package_path, physics_iterations):
             'marker_aruco-' + str(elem['id'])
         # Calculate pose
         elem['pose']['orientation'][0] = elem['pose']['orientation'][0] - 90
+        elem['pose']['position'] = np.array(elem['pose']['position'])
+        offset_heuristic = elem['pose']['position'][2] > 0.0
+        if elem['pose'].get('offset', offset_heuristic):
+            elem['pose']['position'] += 0.0205*np.r_[np.cos(np.radians(elem['pose']['orientation'][2] + 90)),
+                                                     np.sin(np.radians(elem['pose']['orientation'][2] + 90)),
+                                                     0.0]
+
 
         ET.SubElement(marker_include, "pose", frame="''").text = ' '.join(str(
             e) for e in elem['pose']['position']) + ' ' + ' '.join(str(math.radians(e)) for e in elem['pose']['orientation'])
