@@ -8,6 +8,7 @@ from __future__ import print_function, unicode_literals
 import xml.etree.cElementTree as ET
 import math
 import re
+import numpy as np
 
 
 def indent(elem, level=0):
@@ -90,7 +91,7 @@ def add_wall(world, elem, index):
                                                                ['stop'][1] - elem['plane']['start'][1])) + ' 0.02 ' + str(math.fabs((elem['plane']['stop'][2] - elem['plane']['start'][2])))
 
 
-def generate_world(save_path, data, package_path):
+def generate_world(save_path, filename, data, package_path, physics_iterations):
     sdf = ET.Element("sdf", version="1.5")
 
     world = ET.SubElement(sdf, "world", name="default")
@@ -102,11 +103,6 @@ def generate_world(save_path, data, package_path):
     ground_include = ET.SubElement(world, "include")
     ET.SubElement(ground_include, "uri").text = "model://ground_plane"
     ET.SubElement(ground_include, "pose").text = "0 0 -0.001 0 0 0"
-
-    # Add unused camera to fix a bug with the camera taking a long time loading on school computers
-    camera_include = ET.SubElement(world, "include")
-    ET.SubElement(camera_include, "uri").text = "model://camera"
-    ET.SubElement(camera_include, "pose").text = "0 0 -1 0 0 0"
 
     # Add airspace from json file
     airspace_model = ET.SubElement(world, "model", name="airspace")
@@ -148,7 +144,13 @@ def generate_world(save_path, data, package_path):
             'marker_aruco-' + str(elem['id'])
         # Calculate pose
         elem['pose']['orientation'][0] = elem['pose']['orientation'][0] - 90
-        elem['pose']['orientation'][1] = -elem['pose']['orientation'][1]
+        elem['pose']['position'] = np.array(elem['pose']['position'])
+        offset_heuristic = elem['pose']['position'][2] > 0.0
+        if elem['pose'].get('offset', offset_heuristic):
+            elem['pose']['position'] += 0.0205*np.r_[np.cos(np.radians(elem['pose']['orientation'][2] + 90)),
+                                                     np.sin(np.radians(elem['pose']['orientation'][2] + 90)),
+                                                     0.0]
+
 
         ET.SubElement(marker_include, "pose", frame="''").text = ' '.join(str(
             e) for e in elem['pose']['position']) + ' ' + ' '.join(str(math.radians(e)) for e in elem['pose']['orientation'])
@@ -167,7 +169,6 @@ def generate_world(save_path, data, package_path):
             'sign_' + str(elem['sign'])
         # Calculate pose
         elem['pose']['orientation'][0] = elem['pose']['orientation'][0] - 90
-        elem['pose']['orientation'][1] = -elem['pose']['orientation'][1]
 
         ET.SubElement(sign_include, "pose", frame="''").text = ' '.join(str(
             e) for e in elem['pose']['position']) + ' ' + ' '.join(str(math.radians(e)) for e in elem['pose']['orientation'])
@@ -191,13 +192,26 @@ def generate_world(save_path, data, package_path):
     ET.SubElement(constraints, "contact_max_correcting_vel").text = "100"
     ET.SubElement(constraints, "contact_surface_layer").text = "0.001"
 
-    ET.SubElement(physics, "max_step_size").text = "0.002"
+    ET.SubElement(physics, "max_step_size").text = str(1.0/physics_iterations)
     ET.SubElement(physics, "real_time_factor").text = "1"
-    ET.SubElement(physics, "real_time_update_rate").text = "500"
+    ET.SubElement(physics, "real_time_update_rate").text = str(
+        physics_iterations)
     ET.SubElement(physics, "magnetic_field").text = "6e-06 2.3e-05 -4.2e-05"
 
     tree = ET.ElementTree(sdf)
     indent(sdf)
 
-    print("Saving Gazebo world to:", save_path)
-    tree.write(save_path, encoding="utf-8", xml_declaration=True)
+    print("Saving Gazebo world to:", save_path + "/no_camera/" + filename)
+    tree.write(save_path + "/no_camera/" + filename,
+               encoding="utf-8", xml_declaration=True)
+
+    # Add unused camera to fix a bug with the camera taking a long time loading on school computers
+    camera_include = ET.SubElement(world, "include")
+    ET.SubElement(camera_include, "uri").text = "model://camera"
+    ET.SubElement(camera_include, "pose").text = "0 0 -1 0 0 0"
+
+    tree = ET.ElementTree(sdf)
+    indent(sdf)
+
+    print("Saving Gazebo world to:", save_path + filename)
+    tree.write(save_path + filename, encoding="utf-8", xml_declaration=True)
