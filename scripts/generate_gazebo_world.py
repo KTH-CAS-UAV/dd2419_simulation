@@ -160,7 +160,8 @@ def generate_world(save_path, filename, data, package_path, physics_iterations):
     for elem in data['walls']:
         add_wall(world, elem, index)
         if 'gate' in elem:
-            index = index + 1
+            continue
+        index = index + 1
 
     # Add signs from json file
     for elem in data['roadsigns']:
