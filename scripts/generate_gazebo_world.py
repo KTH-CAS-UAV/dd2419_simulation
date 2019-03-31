@@ -147,7 +147,7 @@ def generate_world(save_path, filename, data, package_path, physics_iterations):
         elem['pose']['position'] = np.array(elem['pose']['position'])
         offset_heuristic = elem['pose']['position'][2] > 0.0
         if elem['pose'].get('offset', offset_heuristic):
-            elem['pose']['position'] += 0.0205*np.r_[np.cos(np.radians(elem['pose']['orientation'][2] + 90)),
+            elem['pose']['position'] += 0.01005 * np.r_[np.cos(np.radians(elem['pose']['orientation'][2] + 90)),
                                                      np.sin(np.radians(elem['pose']['orientation'][2] + 90)),
                                                      0.0]
 
@@ -160,7 +160,8 @@ def generate_world(save_path, filename, data, package_path, physics_iterations):
     for elem in data['walls']:
         add_wall(world, elem, index)
         if 'gate' in elem:
-            index = index + 1
+            continue
+        index = index + 1
 
     # Add signs from json file
     for elem in data['roadsigns']:
