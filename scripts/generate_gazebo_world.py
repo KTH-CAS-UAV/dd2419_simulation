@@ -104,39 +104,6 @@ def generate_world(save_path, filename, data, package_path, physics_iterations):
     ET.SubElement(ground_include, "uri").text = "model://ground_plane"
     ET.SubElement(ground_include, "pose").text = "0 0 -0.001 0 0 0"
 
-    # Add airspace from json file
-    airspace_model = ET.SubElement(world, "model", name="airspace")
-    ET.SubElement(
-        airspace_model, "pose", frame="").text = str((data['airspace']['min'][0] + data['airspace']['max'][0]) / 2) + ' ' + str((data['airspace']['min'][1] + data['airspace']['max'][1]) / 2) + ' ' + str((data['airspace']['min'][2] + data['airspace']['max'][2]) / 2) + ' 0 0 0'
-    airspace_link = ET.SubElement(
-        airspace_model, "link", name="link_0")
-    ET.SubElement(airspace_link, "pose", frame="").text = '0 0 0 0 0 0'
-    ET.SubElement(airspace_link, "gravity").text = "0"
-    ET.SubElement(airspace_link, "self_collide").text = "0"
-    ET.SubElement(airspace_link, "kinematic").text = "1"
-
-    airspace_visual = ET.SubElement(
-        airspace_link, "visual", name="airspace_visual")
-    ET.SubElement(
-        airspace_visual, "pose", frame="").text = '0 0 0 0 0 0'
-
-    airspace_geometry = ET.SubElement(airspace_visual, "geometry")
-    airspace_box = ET.SubElement(airspace_geometry, "box")
-    ET.SubElement(airspace_box, "size").text = str(
-        data['airspace']['max'][0] - data['airspace']['min'][0]) + ' ' + str(
-        data['airspace']['max'][1] - data['airspace']['min'][1]) + ' ' + str(
-        data['airspace']['max'][2] - data['airspace']['min'][2])
-
-    airspace_material = ET.SubElement(airspace_visual, "material")
-    airspace_script = ET.SubElement(airspace_material, "script")
-    ET.SubElement(
-        airspace_script, "uri").text = 'file://media/materials/scripts/gazebo.material'
-    ET.SubElement(
-        airspace_script, "name").text = 'Gazebo/DarkOrangeTransparentOverlay'
-
-    ET.SubElement(airspace_visual, "cast_shadows").text = '0'
-    ET.SubElement(airspace_visual, "transparency").text = '0.85'
-
     # Add markers from json file
     for elem in data['markers']:
         marker_include = ET.SubElement(world, "include")
@@ -198,18 +165,6 @@ def generate_world(save_path, filename, data, package_path, physics_iterations):
     ET.SubElement(physics, "real_time_update_rate").text = str(
         physics_iterations)
     ET.SubElement(physics, "magnetic_field").text = "6e-06 2.3e-05 -4.2e-05"
-
-    tree = ET.ElementTree(sdf)
-    indent(sdf)
-
-    print("Saving Gazebo world to:", save_path + "/no_camera/" + filename)
-    tree.write(save_path + "/no_camera/" + filename,
-               encoding="utf-8", xml_declaration=True)
-
-    # Add unused camera to fix a bug with the camera taking a long time loading on school computers
-    camera_include = ET.SubElement(world, "include")
-    ET.SubElement(camera_include, "uri").text = "model://camera"
-    ET.SubElement(camera_include, "pose").text = "0 0 -1 0 0 0"
 
     tree = ET.ElementTree(sdf)
     indent(sdf)
