@@ -8,31 +8,6 @@
       <uri>model://ground_plane</uri>
       <pose>0 0 -0.001 0 0 0</pose>
     </include>
-    <model name="airspace">
-      <pose frame="">0 0 2.5 0 0 0</pose>
-      <link name="link_0">
-        <pose frame="">0 0 0 0 0 0</pose>
-        <gravity>0</gravity>
-        <self_collide>0</self_collide>
-        <kinematic>1</kinematic>
-        <visual name="airspace_visual">
-          <pose frame="">0 0 0 0 0 0</pose>
-          <geometry>
-            <box>
-              <size>20 20 5.0</size>
-            </box>
-          </geometry>
-          <material>
-            <script>
-              <uri>file://media/materials/scripts/gazebo.material</uri>
-              <name>Gazebo/DarkOrangeTransparentOverlay</name>
-            </script>
-          </material>
-          <cast_shadows>0</cast_shadows>
-          <transparency>0.85</transparency>
-        </visual>
-      </link>
-    </model>
     <include>
       <uri>model://marker_aruco-0</uri>
       <pose frame="''">-2.0 -1.0 0.0 0.0 -0.0 1.57079632679</pose>
@@ -754,9 +729,5 @@
       <real_time_update_rate>500</real_time_update_rate>
       <magnetic_field>6e-06 2.3e-05 -4.2e-05</magnetic_field>
     </physics>
-    <include>
-      <uri>model://camera</uri>
-      <pose>0 0 -1 0 0 0</pose>
-    </include>
   </world>
 </sdf>
