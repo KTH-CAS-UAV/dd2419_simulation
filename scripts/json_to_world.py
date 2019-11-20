@@ -103,8 +103,8 @@ def main(argv):
             print("")
 
             print("Generating Gazebo world")
-            if not os.path.exists(sim_pkg_path + '/worlds/no_camera/'):
-                os.makedirs(sim_pkg_path + '/worlds/no_camera/')
+            if not os.path.exists(sim_pkg_path + '/worlds/'):
+                os.makedirs(sim_pkg_path + '/worlds/')
             generate_gazebo_world.generate_world(
                 sim_pkg_path + '/worlds/', re.sub('\.world$', '', filename) + '.world', data, sim_pkg_path, physics_iterations)
             print("")
