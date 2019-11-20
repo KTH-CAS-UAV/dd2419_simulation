@@ -12,7 +12,6 @@ import os
 import re
 import gates_to_walls
 import generate_gazebo_world
-import svg_to_model
 import glob
 
 
@@ -88,16 +87,6 @@ def main(argv):
         print("")
         with open(re.sub('\.json$', '', json_file) + ".json") as f:
             data = json.load(f)
-
-            print('Generating PNG images of signs from SVG files')
-            svg_to_model.svg_to_model(
-                resource_pkg_path, sim_pkg_path, 'sign', data['roadsign_size'][0], data['roadsign_size'][1])
-            print("")
-
-            print('Generating PNG images of ArUco markers from SVG files')
-            svg_to_model.svg_to_model(
-                resource_pkg_path, sim_pkg_path, 'marker', data['marker_size'][0], data['marker_size'][1])
-            print("")
 
             print("Turning gates into walls")
             # 'date =' is not necessary, but easier to read
