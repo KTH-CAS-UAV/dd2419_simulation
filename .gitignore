@@ -52,3 +52,6 @@ CATKIN_IGNORE
 
 # VS Code
 .vscode/
+
+# Gazebo worlds folder
+worlds/
