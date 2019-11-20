@@ -41,9 +41,10 @@
   <arg name="tf_prefix_1" default="$(arg cfPrefix)1" />
   <arg name="color_prop_front_1" default="Blue" />
   <arg name="color_prop_back_1" default="Red" />
-  <arg name="x_1" default="0.0" />
-  <arg name="y_1" default="0.0" />
+  <arg name="x_1" default="0.75" />
+  <arg name="y_1" default="-1.25" />
   <arg name="z_1" default="0.03" />
+  <arg name="yaw_1" default="1.4" />
 
   <!-- The following line causes gzmsg and gzerr messages to be printed to the console
       (even when Gazebo is started through roslaunch) -->
@@ -52,18 +53,9 @@
   <env name="GAZEBO_MODEL_PATH" value="${GAZEBO_MODEL_PATH}:$(find crazyflie_gazebo)/models:$(find dd2419_simulation)/models/signs:$(find dd2419_simulation)/models/markers"/>
   <env name="GAZEBO_RESOURCE_PATH" value="${GAZEBO_RESOURCE_PATH}:$(find crazyflie_gazebo)/models:$(find dd2419_simulation)/models/signs:$(find dd2419_simulation)/models/markers"/>
 
-  <!-- Camera -->
-  <include file="$(find gazebo_ros)/launch/empty_world.launch" if="$(arg enable_camera)">
+  <!-- Start the Gazebo simulator -->
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
     <arg name="world_name" value="$(find dd2419_simulation)/worlds/$(arg world_name).world"/>
-    <arg name="debug" value="$(arg debug)" />
-    <arg name="paused" value="$(arg paused)" />
-    <arg name="gui" value="$(arg gui)" />
-    <arg name="verbose" value="$(arg verbose)"/>
-  </include>
-
-  <!-- No camera -->
-  <include file="$(find gazebo_ros)/launch/empty_world.launch" unless="$(arg enable_camera)">
-    <arg name="world_name" value="$(find dd2419_simulation)/worlds/no_camera/$(arg world_name).world"/>
     <arg name="debug" value="$(arg debug)" />
     <arg name="paused" value="$(arg paused)" />
     <arg name="gui" value="$(arg gui)" />
@@ -82,6 +74,7 @@
       <arg name="x" default="$(arg x_1)"/>
       <arg name="y" default="$(arg y_1)"/>
       <arg name="z" default="$(arg z_1)"/>
+      <arg name="yaw" default="$(arg yaw_1)"/>
       <arg name="enable_camera" default="$(arg enable_camera)"/>
       <arg name="camera_fps" default="$(arg camera_fps)" />
       <arg name="camera_hfov" default="$(arg camera_hfov)" />
@@ -111,6 +104,11 @@
       <arg name="enable_logging_pressure" value="$(arg enable_logging_pressure)"/>
       <arg name="enable_logging_battery" value="$(arg enable_logging_battery)"/>
       <arg name="enable_logging_packets" value="$(arg enable_logging_packets)"/>
+
+      <arg name="x" default="$(arg x_1)"/>
+      <arg name="y" default="$(arg y_1)"/>
+      <arg name="z" default="$(arg z_1)"/>
+      <arg name="yaw" default="$(arg yaw_1)"/>
     </include>
   </group>
 
