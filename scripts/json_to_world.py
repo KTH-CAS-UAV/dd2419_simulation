@@ -93,14 +93,14 @@ def main(argv):
             data = gates_to_walls.gates_to_walls(data)
             print("")
 
-            save_path = json_path + 'walled/'
-            if not os.path.exists(save_path):
-                os.makedirs(save_path)
-            save_path = save_path + 'walled_' + filename + '.json'
-            print("Saving walled json world to:", save_path)
-            with open(save_path, 'w') as f:
-                json.dump(data, f, default=list, indent=2)
-            print("")
+            # save_path = json_path + 'walled/'
+            # if not os.path.exists(save_path):
+            #     os.makedirs(save_path)
+            # save_path = save_path + 'walled_' + filename + '.json'
+            # print("Saving walled json world to:", save_path)
+            # with open(save_path, 'w') as f:
+            #     json.dump(data, f, default=list, indent=2)
+            # print("")
 
             print("Generating Gazebo world")
             if not os.path.exists(sim_pkg_path + '/worlds/'):
