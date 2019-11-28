@@ -76,7 +76,7 @@ def add_wall(world, elem, index):
     ET.SubElement(
         script, "uri").text = 'file://media/materials/scripts/gazebo.material'
     ET.SubElement(
-        script, "name").text = 'Gazebo/DarkOrangeTransparentOverlay'
+        script, "name").text = 'Gazebo/Orange'
 
     ET.SubElement(visual, "cast_shadows").text = '1'
     ET.SubElement(visual, "transparency").text = '0'
