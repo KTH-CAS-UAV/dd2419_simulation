@@ -41,10 +41,10 @@
   <arg name="tf_prefix_1" default="$(arg cfPrefix)1" />
   <arg name="color_prop_front_1" default="Blue" />
   <arg name="color_prop_back_1" default="Red" />
-  <arg name="x_1" default="0.75" />
-  <arg name="y_1" default="-1.25" />
+  <arg name="x_1" default="0.0" />
+  <arg name="y_1" default="0.0" />
   <arg name="z_1" default="0.03" />
-  <arg name="yaw_1" default="1.4" />
+  <arg name="yaw_1" default="0.0" />
 
   <!-- The following line causes gzmsg and gzerr messages to be printed to the console
       (even when Gazebo is started through roslaunch) -->
